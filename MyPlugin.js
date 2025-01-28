@@ -67,28 +67,26 @@ export const MyPlugin = () => {
     	          </div>
     	        </div>
     	        <h2 className='text-2xl font-semibold text-center text-neutral-950'>
-    	          John Doe
+    	          Sia Khorsand
     	        </h2>
     	        
     	        <ul className='flex justify-center mt-4 gap-3'>
     	          <i className='fa-brands fa-github text-neutral-950 text-xl'></i>
     	          <i className='fa-brands fa-linkedin text-neutral-950 text-xl'></i>
     	          <i className='material-symbols-outlined text-neutral-950 text-xl'>
-    	            email
+    	            skhorsand00@gmail.com
     	          </i>
     	        </ul>
     	      </section>
     	<p className='text-center text-neutral-600'>
-    	          Passionate about creating elegant and efficient solutions.
+    	          Cognitive Science Major, specializing in Machine Learning and Neural Computation, with a minor in Computer Science. Passionate about software development, data science, AI, and computational applications in neuroscience and various interdisciplinary fields. 
     	        </p>
     	    </aside>
     	    <main className='flex-1'>
     	      <section className='mb-6'>
     	        <h3 className='text-2xl font-title text-primary-950'>About Me</h3>
     	        <p className='mt-4 text-neutral-700 leading-relaxed'>
-    	          I am a software engineer with a focus on building scalable web
-    	          applications. I thrive on solving complex problems and turning ideas
-    	          into reality.
+    	          Hi, I'm Sia! I am a student at University of California, San Diego, pursuing a Bachelor of Science in Cognitive Science with a specialization in Machine Learning and Neural Computation. I am also minoring in Computer Science....
     	        </p>
     	      </section>
     	      <section className='mb-6'>
@@ -100,9 +98,9 @@ export const MyPlugin = () => {
     	              alt='Project A'
     	              className='w-full h-[120px] rounded-md object-cover mb-2'
     	            />
-    	            <h4 className='text-lg font-medium text-neutral-950'>Project A</h4>
+    	            <h4 className='text-lg font-medium text-neutral-950'>Personal Website</h4>
     	            <p className='mt-2 text-neutral-600'>
-    	              A web application for managing tasks efficiently.
+    	              Website portfolio for showcasing projects.
     	            </p>
     	          </div>
     	          <div className='bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl'>
@@ -111,9 +109,9 @@ export const MyPlugin = () => {
     	              alt='Project B'
     	              className='w-full h-[120px] rounded-md object-cover mb-2'
     	            />
-    	            <h4 className='text-lg font-medium text-neutral-950'>Project B</h4>
+    	            <h4 className='text-lg font-medium text-neutral-950'>Supervised ML Comparative Study</h4>
     	            <p className='mt-2 text-neutral-600'>
-    	              An innovative platform for online learning.
+    	              A comparative study of supervised machine learning algorithms....
     	            </p>
     	          </div>
     	          <div className='bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl'>
@@ -139,7 +137,7 @@ export const MyPlugin = () => {
     	            'React',
     	            'Node.js',
     	            'Python',
-    	            'Django',
+    	            'Django', 'C++', 'Java', 'SQL', 'Git', 'TensorFlow', 'PyTorch', 'Keras', 'Scikit-Learn', 'Pandas', 'Matplotlib', 'Numpy', 'Jupyter', 'Swift', 'OOP', 'Data Structures', 'Algorithms'
     	          ].map((skill, index) => (
     	            <div
     	              key={index}
@@ -164,7 +162,7 @@ export const MyPlugin = () => {
     	            <p className='font-bold text-neutral-950'>Junior Developer</p>
     	            <p className='text-neutral-600'>ABC Corp | May 2018 - Dec 2019</p>
     	            <p className='mt-2 text-neutral-700'>
-    	              Contributed to frontend optimizations and design.
+    	              Contributed to frontend optimizations and design...
     	            </p>
     	          </li>
     	        </ul>
@@ -172,7 +170,7 @@ export const MyPlugin = () => {
     	    </main>
     	  </div>
     	  <footer className='bg-neutral-200 p-6 text-center'>
-    	    <p className='text-neutral-600'>© 2023 John Doe. All rights reserved.</p>
+    	    <p className='text-neutral-600'>© 2025 Sia Khorsand. All rights reserved.</p>
     	  </footer>
     	</div> 
             </div>
