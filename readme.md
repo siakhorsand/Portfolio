@@ -1,0 +1,2 @@
+# My component
+[![Webcrumbs](https://webcrumbs.cloud/thumbnails/036816de8076513bc789713895697cc227d57ead9e69d62804f0aab729ebbbca_20077c445c655813ae658211e48f0b4ed4603d556d42e03b64c6d43896b4d3a4.png)](https://tools.webcrumbs.org/frontend-ai?hash=036816de8076513bc789713895697cc227d57ead9e69d62804f0aab729ebbbca&theme=20077c445c655813ae658211e48f0b4ed4603d556d42e03b64c6d43896b4d3a4)
