@@ -12,7 +12,7 @@ export const MyPlugin = () => {
             	<div className='min-h-[800px] bg-white rounded-lg shadow-lg'>
     	  <header className='bg-neutral-200 p-6'>
     	    <h1 className='text-4xl font-title text-primary-950 text-center sm:text-left'>
-    	      Software Engineer Portfolio
+    	      Sia Khorsand - Curriculum Vitae 
     	    </h1>
     	    <p className='mt-2 text-neutral-700 text-center sm:text-left'>
     	      Showcasing my projects, experiences, and journey in tech.
