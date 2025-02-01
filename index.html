@@ -541,7 +541,7 @@
           var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
       }
       #webcrumbs .shadow-md {
-        --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        --tw-shadow: 0 15px 15px 10px rgba(0, 0, 0, 0.1),
           0 2px 4px -2px rgba(0, 0, 0, 0.1);
         --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
           0 2px 4px -2px var(--tw-shadow-color);
@@ -617,6 +617,13 @@
         #webcrumbs .sm\:w-1\/4 {
           width: 25%;
         }
+        @media (prefers-color-scheme: dark) {
+  :root:not(.dark) {
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --primary-color: #58a6ff;
+  }
+}
         #webcrumbs .sm\:grid-cols-2 {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -647,6 +654,59 @@
         justify-content: center;
         background: linear-gradient(135deg, #ffffff, #d4d4d4);
       }
+
+      /* --- 3D Tilt for Resume Button --- */
+.tilt-button {
+  transform-style: preserve-3d;
+  /* It's a good idea to set an initial transform so that the element always reserves the space for 3D effects */
+  transform: perspective(100px) rotateX(0deg) rotateY(0deg) scale(1);
+  transition: scale(2); 
+}
+/* Custom styles for project cards */
+.project-card {
+  max-height: 150px;       /* Collapsed height (adjust as needed) */
+  overflow: hidden;
+  transition: max-height 0.00001 ease;
+  cursor: pointer;
+}
+
+/* Expanded state: set a larger max-height */
+.project-card.expanded {
+  max-height: 500px;       /* Expanded height – make sure this is high enough for the extra info */
+  transform: scale(2.5);  /* slightly scale up to pop out */
+}
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #2221b4; 
+}
+
+.dark {
+  --bg-color: #0d1117;
+  --text-color: #c9d1d9;
+  --primary-color: #58a6ff;
+}
+
+    </style>
+    <style>
+     /* Ensure the profile photo container is relatively positioned */
+[data-handler="handler_0"] {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine element styles */
+.shine {
+  position: absolute;
+  top: 0;
+  left: 10;
+  width: 80%;
+  height: 0%;
+  background: linear-gradient(120deg, transparent 10%, rgba(255,255,255,0.5) 50%, transparent 70%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+} 
     </style>
   </head>
   <body>
@@ -654,8 +714,8 @@
       <h1 class="text-4xl font-title text-primary-950 text-center sm:text-left"> Sia Khorsand </h1> 
       <p class="mt-2 text-neutral-700 text-center sm:text-left"> Showcasing my projects, experiences, and journey in tech and computation. </p>
      </header> 
-     <div class="flex flex-col sm:flex-row gap-6 p-6"> <aside class="sm:w-1/4"> <section class="flex flex-col gap-4 items-center sm:items-start"> 
-      <div class="mx-auto ml-[20px] rounded-full w-[150px] h-[150px] perspective-1000" style="position:relative"> 
+     <div class="flex flex-col sm:flex-row gap-6 p-6"> <aside class="sm:w-1/4"> <section class="flex flex-col gap-4 items-center">
+      <div class="mx-auto rounded-full w-[150px] h-[150px] perspective-1000" style="position:relative">
         <div class="relative group transition-transform" style="width:150px;
       height:150px;
       perspective:800px"> 
@@ -668,64 +728,176 @@
         background-repeat:no-repeat;
         border-radius:50%;
         box-shadow:1 10px 80px rgba(0, 0, 0, 1);
-        transform-style:preserve-3d" data-handler="handler_0"> 
+        transform-style:preserve-3d" 
+        data-handler="handler_0"> 
+        <div class="shine"></div>
+        <div class="absolute inset-0 pointer-events-none rounded-full transition-opacity opacity-0 group-hover:opacity-100" style="box-shadow:0 0 25px 25px rgba(255, 255, 255, 0.5)"></div>
 
-        <div class="absolute inset-0 pointer-events-none rounded-full transition-opacity opacity-0 group-hover:opacity-100" style="box-shadow:0 0 15px 5px rgba(255, 255, 255, 0.5)"></div> </div> </div> </div>
-         <h2 class="text-2xl font-semibold text-center text-neutral-950">Sia Khorsand </h2> <ul class="flex justify-center mt-4 gap-3">
+
+        <div class="absolute inset-0 pointer-events-none rounded-full transition-opacity opacity-0 group-hover:opacity-100" style="box-shadow:0 0 25px 25px rgba(255, 255, 255, 0.5)"></div> </div> </div> </div>
+        <h2 class="text-2xl font-semibold text-center text-neutral-950">Sia Khorsand </h2> 
+        <a href="Resume.pdf" download class="tilt-button mt-4 inline-block bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:bg-primary-200">
+          Resume
+        </a>
+    <ul class="flex justify-center mt-4 gap-3">
           <div class="flex justify-center gap-6">
+            
             <a href="https://github.com/siakhorsand" target="_blank"> 
-              <i class="fa-brands fa-github text-neutral-950 text-xl"></i>
+              <i class="fa-brands fa-github text-neutral-950 text-xl">
+              </i>
             </a>
             <a href="https://linkedin.com/in/siakhorsand/" target="_blank"> 
               <i class="fa-brands fa-linkedin text-neutral-950 text-xl"></i>
             </a>
             <a href="mailto:skhorsand00@gmail.com">
               <i class="material-symbols-outlined text-neutral-950 text-xl">email</i>
-            </a>
           </div>
+          
           </a>
         
         </ul> </section>
-         <p class="text-center text-neutral-600"> Passionate about building innovative software solutions to bridge the gap between computation and meaningful impact. </p> </aside> 
-         <main class="flex-1"> <section class="mb-6"> <h3 class="text-2xl font-title text-primary-950">About Me</h3> <p class="mt-4 text-neutral-700 leading-relaxed"> Hi! I'm Sia. I am a rising senior at UC San Diego, majoring in Cognitive Science with a specialization in Machine Learning and Neural Computation, and minoring in Computer Science. My passion lies at the intersection between software development, artificial intelligence, human-computer interaction, and research and data science—essentially, anywhere technology meets people in meaningful ways.<br> I thrive on solving problems, whether it's designing intuitive software solutions, training and fine tuning machine learning models, or diving into data to extract insights for research and development. <br> You can learn more about my journey and experiences below!  </p> </section>
-           <section class="mb-6"> <h3 class="text-2xl font-title text-primary-950">Projects</h3> 
+         <p class="text-center text-neutral-600"> Passionate about building innovative software solutions to bridge the gap between computation and meaningful impact.
+           </p>
+         </aside> 
+
+         <!-- ABOUT ME SECTION-->
+         <main class="flex-1">
+          <section class="mb-6">
+            <h3 class="text-2xl font-title text-primary-950">About Me</h3>
+            <p id="about-me" class="mt-4 text-neutral-700 leading-relaxed">
+              Hi! I'm Sia. I am a rising senior at UC San Diego, majoring in Cognitive Science with a specialization in Machine Learning and Neural Computation, and minoring in Computer Science. My passion lies at the intersection between software development, artificial intelligence, human-computer interaction, and research and data science—essentially, anywhere technology meets people in meaningful ways.<br>
+              I thrive on solving problems, whether it's designing intuitive software solutions, training and fine tuning machine learning models, or diving into data to extract insights for research and development.<br>
+              You can learn more about my journey and experiences below!
+            </p>
+          </section>
+         
+          
+      <!---- PROJECTS SECTION ---->
+          <section class="mb-6">
+            <h3 class="text-2xl font-title text-primary-950">Projects</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-               <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl">
-                <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/1" alt="" class="w-full h-[120px] rounded-md object-cover mb-2"/> <h4 class="text-lg font-medium text-neutral-950">AI MathPad</h4>
-             <p class="mt-2 text-neutral-600"> A program that utilizes Convolutional neural networks (CNNs) and image processing techniques to recognize handwritten digits and mathematical operations drawn on a digital canvas. The system leverages computer vision and deep learning to preprocess and classify user input in real time, and ultimately returning the correct answer to the mathematical operation. <b>Learn More</b>  </p> </div> 
-              <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl"> <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/2" alt="Project B" class="w-full h-[120px] rounded-md object-cover mb-2"/> <h4 class="text-lg font-medium text-neutral-950">Comparative Analysis of Machine Learning Model Performance Across Three Datasets: A Technical Evaluation.</h4> 
-                <p class="mt-2 text-neutral-600"> Conducted a comparative analysis of supervised machine learning classifiers—Random Forest, Support Vector Machine (SVM), and Logistic Regression—across multiple binary-class datasets. The project involved hyperparameter tuning, cross-validation, and performance evaluation using Python's scikit-learn. Demonstrated methods in model selection, data preprocessing, and visualization while working with real-world datasets from the UCI Machine Learning Repository. Source code can be provided upon request. </p> </div> 
-                <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl"> <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/3" alt="Project C" class="w-full h-[120px] rounded-md object-cover mb-2"/> <h4 class="text-lg font-medium text-neutral-950">Dynamic Valet Business Management App</h4>
-                   <p class="mt-2 text-neutral-600"> In the final development stages of an iOS app, currently being beta-tested for my part-time valet job, to dynamically manage and track shifts and cars with a responsive grid layout to boost efficiency by 25%. Employed <b> MVVM</b> architecture for data persistence, along with <b> Firebase</b> to handle the backend and user authentication. The app is designed to be user-friendly and intuitive, with a focus on real-time updates and notifications. 
-                   </d> 
-                  <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl"></div>
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/4" alt="Project E" class="w-full h-[120px] rounded-md object-cover mb-2"/>
-                    <h4 class="text-lg font-medium text-neutral-950">Path-Finding Visualizer</h4>
-                    <p class="mt-2 text-neutral-600">
-                      This Python application is a real-time pathfinding visualizer built using Pygame, showcasing multiple search algorithms on a dynamically generated grid. Originally developed as an academic assignment, I expanded upon it by incorporating additional algorithms, optimizing performance, and designing a retro-style visual aesthetic reminiscent of classic arcade systems.
-                    </p>
-                  </div>
-
-                  <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl">
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/5" alt="Project F" class="w-full h-[120px] rounded-md object-cover mb-2"/>
-                    <h4 class="text-lg font-medium text-neutral-950">Genetic Algorithm Agent</h4>
-                    <p class="mt-2 text-neutral-600">
-                      In Progress.. 
-                    </p>
-                  </div>
-
-                  <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl">
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/6" alt="Project G" class="w-full h-[120px] rounded-md object-cover mb-2"/>
-                    <h4 class="text-lg font-medium text-neutral-950">Sentiment Analysis Dashboard</h4>
-                    <p class="mt-2 text-neutral-600">
-                      Created a web dashboard that performs real-time sentiment analysis on social media data using Python's NLTK library and Flask. Visualizations powered by D3.js provide insights into public sentiment trends.
-                    </p>
-                  </div>
-                   <div class="bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:scale-[1.05] hover:translate-y-[-5px] hover:shadow-xl"> <img src="https://tools-api.webcrumbs.org/image-placeholder/300/200/shapes/3" alt="Project D" class="w-full h-[120px] rounded-md object-cover mb-2"/> <h5 class="text-lg font-medium text-neutral-950">Dynamic Valet Business Management App</h5>
-                    <p class="mt-2 text-neutral-600"> In the final development stages of an iOS app, currently being beta-tested for my part-time valet job, to dynamically manage and track shifts and cars with a responsive grid layout to boost efficiency by 25%. Employed <b> MVVM</b> architecture for data persistence, along with <b> Firebase</b> to handle the backend and user authentication. The app is designed to be user-friendly and intuitive, with a focus on real-time updates and notifications. 
-                    </d>
-              
- </p> </div> </div> </section> <section class="mb-6"> <h3 class="text-2xl font-title text-primary-950">Skills</h3>
+          
+              <!-- Project 1 -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 1" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Alpha</h4>
+                <p class="mt-2 text-neutral-600">A brief overview of Project Alpha. Click to expand for more details.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed information about Project Alpha goes here. It covers the concept, implementation, and outcomes.</p>
+                </div>
+              </div>
+          
+              <!-- Project 2 -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 2" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Beta</h4>
+                <p class="mt-2 text-neutral-600">A brief description of Project Beta, highlighting its key features.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed information about Project Beta, including technical details and challenges overcome.</p>
+                </div>
+              </div>
+          
+              <!-- Project 3 -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 3" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Comparative Analysis of ML Models</h4>
+                <p class="mt-2 text-neutral-600">
+                  Conducted a comparative analysis of machine learning classifiers across several datasets.
+                </p>
+                <div class="mt-2 text-neutral-600">
+                  <p>Detailed evaluation including hyperparameter tuning, cross-validation, and performance metrics using Python's scikit-learn.</p>
+                </div>
+              </div>
+          
+              <!-- Project 4 -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 4" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Dynamic Valet Business Management App</h4>
+                <p class="mt-2 text-neutral-600">
+                  An iOS app for managing shifts and tracking vehicles, employing MVVM architecture and Firebase for data persistence.
+                </p>
+              </div>
+          
+              <!-- Project 5 -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 5" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Genetic Algorithm Agent</h4>
+                <p class="mt-2 text-neutral-600">In progress...</p>
+              </div>
+          
+              <!-- Project 6 -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 6" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Sentiment Analysis Dashboard</h4>
+                <p class="mt-2 text-neutral-600">
+                  A web dashboard performing real-time sentiment analysis on social media data using NLTK and Flask.
+                </p>
+              </div>
+          
+              <!-- Project 7 (Additional) -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 7" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Eta</h4>
+                <p class="mt-2 text-neutral-600">A brief overview of Project Eta's objectives and design.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed information about Project Eta, including development challenges and achievements.</p>
+                </div>
+              </div>
+          
+              <!-- Project 8 (Additional) -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 8" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Theta</h4>
+                <p class="mt-2 text-neutral-600">A brief description of Project Theta's innovative approach.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>Additional details about Project Theta, including design philosophy and implementation strategies.</p>
+                </div>
+              </div>
+          
+              <!-- Project 9 (Additional) -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 9" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Iota</h4>
+                <p class="mt-2 text-neutral-600">A brief overview of Project Iota's concept and goals.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed information about Project Iota, covering its methodology and expected impact.</p>
+                </div>
+              </div>
+          
+              <!-- Project 10 (Additional) -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 10" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Kappa</h4>
+                <p class="mt-2 text-neutral-600">A brief overview of Project Kappa's unique features.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed insights about Project Kappa, including challenges and breakthrough innovations.</p>
+                </div>
+              </div>
+          
+              <!-- Project 11 (Additional) -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="" alt="Project 11" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Lambda</h4>
+                <p class="mt-2 text-neutral-600">A brief overview of Project Lambda's key highlights.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed information about Project Lambda, including technical specifications and results.</p>
+                </div>
+              </div>
+          
+              <!-- Project 12 (Additional) -->
+              <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
+                <img src="https://via.placeholder.com/300x120" alt="Project 12" class="w-full h-[120px] rounded-md object-cover mb-2"/>
+                <h4 class="text-lg font-medium text-neutral-950">Project Mu</h4>
+                <p class="mt-2 text-neutral-600">A brief overview of Project Mu's concept and execution.</p>
+                <div class="mt-2 text-neutral-600">
+                  <p>More detailed information about Project Mu, describing the project scope, tools used, and outcomes.</p>
+                </div>
+              </div>
+          
+            </div>
+          </section>
+ 
+ <section class="mb-6"> <h3 class="text-2xl font-title text-primary-950">Skills</h3>
   <div class="flex flex-wrap gap-4 mt-4"> <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Java </div>
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> C++ </div>
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Python </div>
@@ -745,15 +917,139 @@
     <p class="mt-2 text-neutral-700"> Contributed to frontend optimizations and design. <br> In progress... </p> </li> </ul> </section> </main> </div>
      <footer class="bg-neutral-200 p-6 text-center"> <p class="text-neutral-600">© 2025 Sia Khorsand. All rights reserved.</p> </footer> </div></div>
 
-   <script>document.querySelector('[data-handler="handler_0"]').addEventListener('mousemove', e => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const x = e.clientX - rect.left - rect.width / 2;
-              const y = e.clientY - rect.top - rect.height / 2;
-              e.currentTarget.style.transform = `rotateX(${-y / 15}deg) rotateY(${x / 15}deg)`;
-            });
-   document.querySelector('[data-handler="handler_0"]').addEventListener('mouseleave', e => {
-              e.currentTarget.style.transform = 'rotateX(0) rotateY(0)';
-            });
+   <script>
+  
+  // --- Resume Button Tilt Effect (following cursor in the opposite direction) ---
+  // --- Profile Picture Tilt & Shine Effect ---
+const profilePic = document.querySelector('[data-handler="handler_0"]');
+if (profilePic) {
+  // Select the shine element that we added inside the profile picture container
+  const shine = profilePic.querySelector('.shine');
+  
+  profilePic.addEventListener('mousemove', e => {
+    const rect = profilePic.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Calculate translation factors for the tilt
+    const translateX = x / 20;
+    const translateY = y / 20;
+    
+    // Update the profile photo's transform (tilt effect)
+    profilePic.style.transform = `perspective(500px) translateX(${translateX}px) translateY(${translateY}px) rotateX(${-y / 15}deg) rotateY(${x / 15}deg)`;
+    
+    // Update the shine's transform to move in the opposite direction
+    if (shine) {
+      shine.style.transform = `translateX(${-translateX}px) translateY(${-translateY}px) skewX(-25deg)`;
+    }
+  });
+  
+  profilePic.addEventListener('mouseleave', () => {
+    profilePic.style.transform = 'perspective(500px) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)';
+    if (shine) {
+      shine.style.transform = 'translateX(0px) translateY(0px) skewX(-25deg)';
+    }
+  });
+}
+  
+
+  // --- Resume Button Tilt and Follow ---
+  const resumeButton = document.querySelector('.tilt-button');
+  if (resumeButton) {
+    resumeButton.addEventListener('mousemove', e => {
+      const rect = resumeButton.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      // Adjust these factors to control the translation magnitude
+      const translateX = x / 20;
+      const translateY = y / 20;
+      resumeButton.style.transform = `perspective(500px) translateX(${translateX}px) translateY(${translateY}px) rotateX(${y / 15}deg) rotateY(${-x / 15}deg) scale(1.05)`;
+    });
+    resumeButton.addEventListener('mouseleave', () => {
+      resumeButton.style.transform = 'perspective(500px) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  }
+  // Select all project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 1.7;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const translateX = x / 30;
+    const translateY = y / 30;
+    card.style.transform = `perspective(500px) translateX(${translateX}px) translateY(${translateY}px) rotateX(${-y / 15}deg) rotateY(${x / 15}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(500px) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)';
+  });
+});
    </script>
+   <script>
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  
+  // Optionally, load the saved preference from localStorage
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
+
+  darkModeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    // Save preference in localStorage
+    if (document.documentElement.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
+</script>
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const aboutMeEl = document.getElementById('about-me');
+      const originalHTML = aboutMeEl.innerHTML;
+      // Split the content by <br> tags so each line is handled separately
+      const lines = originalHTML.split(/<br\s*\/?>/);
+      const characters = 'abcdefghijklmnopqrstuvwxyz_';
+      let interval;
+      let iteration = 0;
+      // Set a fixed number of iterations for the overall animation
+      const totalIterations = 10; // Adjust for overall duration
+  
+      // For each line, reveal a proportion of its characters based on progress
+      function transformLine(line, iteration, totalIterations) {
+        const progress = iteration / totalIterations;
+        const charsToReveal = Math.floor(line.length * progress);
+        let transformed = "";
+        for (let j = 0; j < line.length; j++) {
+          if (j < charsToReveal) {
+            // Reveal the original character
+            transformed += line[j];
+          } else {
+            // Replace with a random character (preserve spaces)
+            transformed += (line[j] === ' ') ? ' ' : characters[Math.floor(Math.random() * characters.length)];
+          }
+        }
+        return transformed;
+      }
+  
+      function startTransformationAnimation() {
+        iteration = 0;
+        clearInterval(interval);
+        interval = setInterval(() => {
+          iteration++;
+          // For each line, compute the transformed text based on the common iteration progress
+          const newLines = lines.map(line => transformLine(line, iteration, totalIterations));
+          aboutMeEl.innerHTML = newLines.join('<br>');
+          // When the iteration reaches the total, stop and restore the original text
+          if (iteration >= totalIterations) {
+            clearInterval(interval);
+            aboutMeEl.innerHTML = originalHTML;
+          }
+        }, 60); // Adjust the delay (ms) for desired speed
+      }
+  
+      // Run the animation once on page load
+      startTransformationAnimation();
+    });
+  </script>
   </body>
 </html>

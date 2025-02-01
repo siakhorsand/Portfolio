@@ -231,11 +231,11 @@ video {
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
   --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
+  --tw-rotate: 35deg;
+  --tw-skew-x: 35deg;
   --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
   --tw-pan-x: ;
   --tw-pan-y: ;
   --tw-pinch-zoom: ;
@@ -284,11 +284,11 @@ video {
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
   --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
-  --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
+  --tw-rotate: 35deg;
+  --tw-skew-x: 10deg;
+  --tw-skew-y: 10deg;
+  --tw-scale-x: 0;
+  --tw-scale-y:  0;
   --tw-pan-x: ;
   --tw-pan-y: ;
   --tw-pinch-zoom: ;
@@ -578,12 +578,12 @@ video {
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 #webcrumbs .hover\:scale-\[1\.05\]:hover {
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
+  --tw-scale-x: 3;
+  --tw-scale-y: 3;
 }
-#webcrumbs .hover\:scale-\[1\.1\]:hover {
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
+#webcrumbs .hover\:scale-\[1\.05\]:hover {
+  --tw-scale-x: 3;
+  --tw-scale-y: 3;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
