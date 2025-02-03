@@ -1,0 +1,22 @@
+.header-container {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ffffff, #d4d4d4);
+  }
+  
+  .magnet-lines-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0; /* behind content */
+    opacity: 0.5; /* adjust to taste */
+  }
+  
+  .header-content {
+    position: relative;
+    z-index: 1; /* above the magnet lines */
+    text-align: center;
+    padding: 2rem;
+  }
