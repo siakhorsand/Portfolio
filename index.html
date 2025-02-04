@@ -710,6 +710,47 @@
   transition: transform 0.2s ease;
 } 
     </style>
+    <style>
+      /* Text Pressure Effect Styles */
+      @keyframes nameGlow {
+        0%, 100% {
+          text-shadow: 0 0 5px rgba(34, 1, 116, 0.2);
+        }
+        50% {
+          text-shadow: 0 0 15px rgba(34, 1, 116, 0.4);
+        }
+      }
+      
+      .text-pressure-title span {
+        display: inline-block;
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform, font-variation-settings;
+      }
+      
+      .text-pressure-title span:hover {
+        animation: nameGlow 2s infinite;
+      }
+      
+      /* Enhanced header container styles */
+      header {
+        position: relative;
+        background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        overflow: hidden;
+      }
+      
+      /* Add depth to the container */
+      header::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+          rgba(255, 255, 255, 0.8),
+          transparent 70%
+        );
+        opacity: 0.5;
+        pointer-events: none;
+      }</style>
   </head>
   <body>
     <div id="webcrumbs"><div class="min-h-[1000px] bg-white rounded-lg shadow-lg"> <header class="bg-neutral-200 p-6"> 
@@ -972,18 +1013,73 @@ if (profilePic) {
     });
   }
   // Select all project cards
-  document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 1.7;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const translateX = x / 30;
-    const translateY = y / 30;
-    card.style.transform = `perspective(500px) translateX(${translateX}px) translateY(${translateY}px) rotateX(${-y / 15}deg) rotateY(${x / 15}deg)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(500px) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)';
-  });
+  // Enhanced 3D card animations
+document.querySelectorAll('.project-card').forEach(card => {
+  let bounds = card.getBoundingClientRect();
+  const mouseEnter = () => {
+    bounds = card.getBoundingClientRect();
+    card.style.transition = 'none'; // Remove transition on mouse enter for immediate response
+  };
+
+  const mouseMove = (e) => {
+    const mouseX = e.clientX - bounds.left;
+    const mouseY = e.clientY - bounds.top;
+    const centerX = bounds.width / 2;
+    const centerY = bounds.height / 2;
+    
+    // Calculate distance from center (0 to 1)
+    const distanceX = (mouseX - centerX) / centerX;
+    const distanceY = (mouseY - centerY) / centerY;
+
+    // Calculate rotation angles (max 15 degrees)
+    const rotateX = distanceY * -12;
+    const rotateY = distanceX * 12;
+    
+    // Add subtle movement based on mouse position
+    const translateX = distanceX * 3;
+    const translateY = distanceY * 3;
+    
+    // Calculate scale based on mouse distance from center
+    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+    const scale = 1 + (0.05 * (1 - Math.min(distance, 1))); // Max scale 1.1
+    
+    // Apply smooth transform with spring-like motion
+    requestAnimationFrame(() => {
+      card.style.transform = `
+        perspective(1000px)
+        scale(${scale})
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateX(${translateX}px)
+        translateY(${translateY}px)
+      `;
+    });
+    
+    // Update card's pseudo-elements for dynamic lighting effect
+    const lightingIntensity = 0.5;
+    card.style.setProperty('--x-light', `${50 + (distanceX * 50)}%`);
+    card.style.setProperty('--y-light', `${50 + (distanceY * 50)}%`);
+    card.style.setProperty('--light-opacity', `${lightingIntensity * (1 - distance)}`);
+  };
+
+  const mouseLeave = () => {
+    // Smooth transition back to original state
+    card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+    card.style.transform = `
+      perspective(1000px)
+      scale(1)
+      rotateX(0deg)
+      rotateY(0deg)
+      translateX(0px)
+      translateY(0px)
+    `;
+    card.style.setProperty('--light-opacity', '0');
+  };
+
+  // Add event listeners
+  card.addEventListener('mouseenter', mouseEnter);
+  card.addEventListener('mousemove', mouseMove);
+  card.addEventListener('mouseleave', mouseLeave);
 });
    </script>
    <script>
