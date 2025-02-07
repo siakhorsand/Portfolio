@@ -3,10 +3,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Add these in the head section -->
+<script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@18.2.0",
+      "react-dom": "https://esm.sh/react-dom@18.2.0",
+      "react-dom/client": "https://esm.sh/react-dom@18.2.0/client"
+    }
+  }
+</script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sia Khorsand</title>
     <style>
+
       @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
       
       @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
@@ -16,6 +30,21 @@
       @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
       
       /*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
+
+      .text-pressure-title {
+  display: inline-block;
+  width: 100%;
+}
+
+.text-pressure-title span {
+  display: inline-block;
+  transition: font-weight 0.3s ease, text-shadow 0.3s ease;
+}
+
+.header-pressure {
+  position: relative;
+  z-index: 1;
+}
       *,
       :after,
       :before {
@@ -31,6 +60,8 @@
         line-height: 1.5;
         -webkit-text-size-adjust: 100%;
         font-family:
+
+
           Open Sans,
           ui-sans-serif,
           system-ui,
@@ -751,12 +782,76 @@
         opacity: 0.5;
         pointer-events: none;
       }</style>
+      <script type="module">
+        import React from 'react';
+        import { createRoot } from 'react-dom/client';
+    
+        // Define the HeaderPressure component inline for testing
+        const HeaderPressure = ({ text, className = '' }) => {
+          return React.createElement('div', { className },
+            text.split('').map((char, i) => 
+              React.createElement('span', { 
+                key: i,
+                style: {
+                  display: 'inline-block',
+                  transition: 'font-weight 0.3s ease'
+                }
+              }, char)
+            )
+          );
+        };
+    
+        // Define headers
+        const headerElements = [
+          {
+            id: 'nameHeader',
+            text: 'Sia Khorsand',
+            className: 'text-4xl font-title text-primary-950'
+          },
+          {
+            id: 'aboutMeHeader',
+            text: 'About Me',
+            className: 'text-2xl font-title text-primary-950'
+          },
+          {
+            id: 'projectsHeader',
+            text: 'Projects',
+            className: 'text-2xl font-title text-primary-950'
+          },
+          {
+            id: 'skillsHeader',
+            text: 'Skills',
+            className: 'text-2xl font-title text-primary-950'
+          },
+          {
+            id: 'experiencesHeader',
+            text: 'Experiences',
+            className: 'text-2xl font-title text-primary-950'
+          }
+        ];
+    
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', () => {
+          headerElements.forEach(({ id, text, className }) => {
+            const container = document.getElementById(id);
+            if (container) {
+              const root = createRoot(container);
+              root.render(React.createElement(HeaderPressure, { text, className }));
+            }
+          });
+        });
+      </script>
+    </head>
   </head>
   <body>
-    <div id="webcrumbs"><div class="min-h-[1000px] bg-white rounded-lg shadow-lg"> <header class="bg-neutral-200 p-6"> 
-      <h1 class="text-4xl font-title text-primary-950 text-center sm:text-left"> Sia Khorsand </h1> 
-      <p class="mt-2 text-neutral-700 text-center sm:text-left"> Showcasing my projects, experiences, and journey in tech and computation. </p>
-     </header> 
+    <div id="webcrumbs"><div class="min-h-[1000px] bg-white rounded-lg shadow-lg"> 
+      <header class="bg-neutral-200 p-6"> 
+        <div id="nameHeader" class="text-center sm:text-left"></div>
+        <p class="mt-2 text-neutral-700 text-center sm:text-left">
+          Showcasing my projects, experiences, and journey in tech and computation.
+        </p>
+      </header>
+      
      <div class="flex flex-col sm:flex-row gap-6 p-6"> <aside class="sm:w-1/4"> <section class="flex flex-col gap-4 items-center">
       <div class="mx-auto rounded-full w-[150px] h-[150px] perspective-1000" style="position:relative">
         <div class="relative group transition-transform" style="width:150px;
@@ -764,7 +859,7 @@
       perspective:800px"> 
         <div class="transition-transform duration-500 group-hover:transition-none" 
         style="width:100%;
-        height:100%;
+        height:100%; 
         background-image:url('linkedin.jpeg');
         background-size:200%;
         background-position:center 35%;
@@ -806,7 +901,7 @@
          <!-- ABOUT ME SECTION-->
          <main class="flex-1">
           <section class="mb-6">
-            <h3 class="text-2xl font-title text-primary-950">About Me</h3>
+            <div id="aboutMeHeader"></div>
             <p id="about-me" class="mt-4 text-neutral-700 leading-relaxed">
               Hi! I'm Sia. I am a rising senior at UC San Diego, majoring in Cognitive Science with a specialization in Machine Learning and Neural Computation, and minoring in Computer Science. My passion lies at the intersection between software development, artificial intelligence, human-computer interaction, and research and data science—essentially, anywhere technology meets people in meaningful ways.<br>
               I thrive on solving problems, whether it's designing intuitive software solutions, training and fine tuning machine learning models, or diving into data to extract insights for research and development.<br>
@@ -816,10 +911,9 @@
          
           
       <!---- PROJECTS SECTION ---->
-          <section class="mb-6">
-            <h3 class="text-2xl font-title text-primary-950">Projects</h3>
+      <a href="/src/Proj1.html" class="project-link">
+            <div id="projectsHeader" class="text-2xl font-title text-primary-950"></div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          
               <!-- Project 1 -->
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 1" class="w-full h-[120px] rounded-md object-cover mb-2"/>
@@ -831,6 +925,7 @@
               </div>
           
               <!-- Project 2 -->
+              <a href="/src/Proj2.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 2" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Beta</h4>
@@ -841,6 +936,7 @@
               </div>
           
               <!-- Project 3 -->
+              <a href="/src/Proj3.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 3" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Comparative Analysis of ML Models</h4>
@@ -853,6 +949,7 @@
               </div>
           
               <!-- Project 4 -->
+              <a href="/src/Proj4.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 4" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Dynamic Valet Business Management App</h4>
@@ -862,6 +959,7 @@
               </div>
           
               <!-- Project 5 -->
+              <a href="/src/Proj5.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 5" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Genetic Algorithm Agent</h4>
@@ -869,6 +967,7 @@
               </div>
           
               <!-- Project 6 -->
+              <a href="/src/Proj6.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 6" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Sentiment Analysis Dashboard</h4>
@@ -878,6 +977,7 @@
               </div>
           
               <!-- Project 7 (Additional) -->
+              <a href="/src/Proj7.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 7" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Eta</h4>
@@ -888,6 +988,7 @@
               </div>
           
               <!-- Project 8 (Additional) -->
+              <a href="/src/Proj8.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 8" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Theta</h4>
@@ -898,6 +999,7 @@
               </div>
           
               <!-- Project 9 (Additional) -->
+              <a href="/src/Proj9.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 9" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Iota</h4>
@@ -908,6 +1010,7 @@
               </div>
           
               <!-- Project 10 (Additional) -->
+              <a href="/src/Proj10.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 10" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Kappa</h4>
@@ -918,6 +1021,7 @@
               </div>
           
               <!-- Project 11 (Additional) -->
+              <a href="/src/Proj11.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="" alt="Project 11" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Lambda</h4>
@@ -928,6 +1032,7 @@
               </div>
           
               <!-- Project 12 (Additional) -->
+              <a href="/src/Proj12.html" class="project-link">
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="https://via.placeholder.com/300x120" alt="Project 12" class="w-full h-[120px] rounded-md object-cover mb-2"/>
                 <h4 class="text-lg font-medium text-neutral-950">Project Mu</h4>
@@ -937,11 +1042,13 @@
                 </div>
               </div>
           
-            </div>
+            </div>  
           </section>
  
- <section class="mb-6"> <h3 class="text-2xl font-title text-primary-950">Skills</h3>
-  <div class="flex flex-wrap gap-4 mt-4"> <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Java </div>
+ <section class="mb-6"> 
+  <div id="skillsHeader" class="text-2xl font-title text-primary-950"></div>
+  <div class="flex flex-wrap gap-4 mt-4">
+  <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Java </div>
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> C++ </div>
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Python </div>
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Git </div>
@@ -954,7 +1061,10 @@
    <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Data Structures</div></div>
   </div> 
   </section> 
-  <section> <h3 class="text-2xl font-title text-primary-950">Experiences</h3> <ul class="mt-4 space-y-4"> <li class="bg-neutral-100 rounded-md p-4">
+  <section> 
+    <div id="experiencesHeader" class="text-2xl font-title text-primary-950">
+    </div>
+    <ul class="mt-4 space-y-4"> <li class="bg-neutral-100 rounded-md p-4">
     <p class="font-bold text-neutral-950">Software Engineering Intern</p> <p class="text-neutral-600">Twilio | June 2022 - August 2022</p> <p class="mt-2 text-neutral-700"> In Progress... </p> </li> <li class="bg-neutral-100 rounded-md p-4"> 
     <p class="font-bold text-neutral-950"> Website Developer</p> <p class="text-neutral-600">Self-employed | May 2021 - Dec 2021</p> 
     <p class="mt-2 text-neutral-700"> Contributed to frontend optimizations and design. <br> In progress... </p> </li> </ul> </section> </main> </div>
@@ -1149,5 +1259,6 @@ document.querySelectorAll('.project-card').forEach(card => {
       startTransformationAnimation();
     });
   </script>
+  <script type="module" src="/src/index.js"></script>
   </body>
-</html>
+</html> 
