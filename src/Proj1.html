@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project XX | Sia Khorsand</title>
+    <title> Visualizing Path Finding Algorithms| Sia Khorsand</title>
     <style>
       /* Inherit all existing styles from your website */
       @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
@@ -97,7 +97,7 @@
       const headerElements = [
         {
           id: 'projectTitleHeader',
-          text: 'Project XX',
+          text: 'Visualizing Path Finding Algorithms',
           className: 'text-4xl font-title text-primary-950'
         }
       ];
@@ -158,19 +158,59 @@
             <div class="project-content">
               <!-- Project Media Section -->
               <section class="project-media">
-                <img src="project-xx-demo.gif" alt="Project XX Demo">
+                <img src="PathFindersDemo.gif" alt="Path Finders Demo">
               </section>
 
               <!-- Project Details -->
-              <article class="space-y-6">
-                <section class="bg-neutral-100 rounded-xl p-6 shadow-md">
-                  <h2 class="text-2xl font-semibold text-primary-950 mb-4">Project Overview</h2>
-                  <p class="text-neutral-700 leading-relaxed">
-                    Project XX is a cutting-edge machine learning application designed to revolutionize the way we analyze and interpret complex datasets. Leveraging state-of-the-art algorithms and a user-friendly interface, this project demonstrates the power of AI in solving real-world problems.
-                    <br><br>
-                    The system is built using Python and PyTorch, with a focus on scalability and performance. Key features include real-time data processing, interactive visualizations, and a robust API for integration with other systems.
-                  </p>
-                </section>
+              <!-- Project Details -->
+<article class="space-y-6">
+  <!-- Existing Project Overview Section -->
+  <section class="bg-neutral-100 rounded-xl p-6 shadow-md">
+    <h2 class="text-2xl font-semibold text-primary-950 mb-4">Project Overview</h2>
+    <p class="text-neutral-700 leading-relaxed">
+      <strong>PathFinders</strong> is a <span class="font-semibold italic">Python</span>-based maze solver and visualizer that originated as a class project. Over time, the project evolved by integrating several pathfinding algorithms and enhancing the experience with a sleek, interactive <span class="font-semibold italic">GUI</span>.
+      <br><br>
+      The system leverages Python’s standard libraries to generate random mazes with guaranteed solvability and features adjustable maze complexity and size. A custom font (<span class="font-semibold italic">Minecraft.ttf</span>) and animated path tracing add a unique visual appeal.
+    </p>
+  </section>
+
+  <!-- Technical Tools & Methods Section -->
+  <section class="bg-neutral-100 rounded-xl p-6 shadow-md">
+    <h2 class="text-2xl font-semibold text-primary-950 mb-4">Technical Tools &amp; Methods</h2>
+    <p class="text-neutral-700 leading-relaxed">
+      <span class="font-semibold italic">Technical Tools:</span>
+      <br>
+      - <span class="font-semibold italic">Python</span> (the project is entirely built using Python)
+      <br>
+      - Custom-built <span class="font-semibold italic">GUI</span> for interactive visualization
+      <br>
+      - Integration of assets like <span class="font-semibold italic">Minecraft.ttf</span> for a distinctive look
+      <br><br>
+      <span class="font-semibold italic">Methods &amp; Algorithms:</span>
+      <br>
+      - <span class="font-semibold italic">Maze Generation</span>: Randomly creates mazes with guaranteed solvability and adjustable complexity
+      <br>
+      - <span class="font-semibold italic">Pathfinding Algorithms</span> including:
+      <ul class="list-disc list-inside">
+        <li><span class="font-semibold italic">Breadth-First Search (BFS)</span></li>
+        <li><span class="font-semibold italic">Depth-First Search (DFS)</span></li>
+        <li><span class="font-semibold italic">A* Search</span></li>
+        <li><span class="font-semibold italic">Bidirectional Search</span></li>
+        <li><span class="font-semibold italic">Simulated Annealing</span></li>
+        <li><span class="font-semibold italic">Dijkstra’s Algorithm</span></li>
+      </ul>
+    </p>
+  </section>
+
+  <!-- Background Section -->
+  <section class="bg-neutral-100 rounded-xl p-6 shadow-md">
+    <h2 class="text-2xl font-semibold text-primary-950 mb-4">Background</h2>
+    <p class="text-neutral-700 leading-relaxed">
+      Originally developed as a class project, <strong>PathFinders</strong> has grown into a robust toolkit that demonstrates various pathfinding strategies in an interactive and visually engaging manner. This evolution showcases not only technical proficiency but also a creative approach to algorithm visualization.
+    </p>
+  </section>
+</article>
+
 
                 <!-- Skills & Tools -->
                 <section class="bg-neutral-100 rounded-xl p-6 shadow-md">
@@ -188,7 +228,7 @@
                 <!-- Source Code Section -->
                 <section class="bg-neutral-100 rounded-xl p-6 shadow-md text-center">
                   <h2 class="text-2xl font-semibold text-primary-950 mb-4">Explore the Code</h2>
-                  <a href="https://github.com/siakhorsand/project-xx"
+                  <a href="https://github.com/siakhorsand/PathFinders"
                      class="tilt-button inline-block bg-primary-100 text-primary-950 font-medium py-3 px-8 rounded-full shadow-md transition-transform duration-300 hover:bg-primary-200"
                      target="_blank">
                     <i class="fab fa-github mr-2"></i>
@@ -201,7 +241,7 @@
         </div>
 
         <footer class="bg-neutral-200 p-6 text-center">
-          <p class="text-neutral-600">© 2025 Sia Khorsand. All rights reserved.</p>
+          <p class="text-neutral-600">© 2025 Sia Khorsand</p>
         </footer>
       </div>
     </div>
