@@ -16,13 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PathFinders Project | Sia Khorsand</title>
     <style>
-      /* Inherit all existing styles from your website */
       @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
       @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
       @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
       @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
 
-      /* Project-specific styles */
       .project-container {
         max-width: 1400px;
         margin: 0 auto;
@@ -34,6 +32,19 @@
         gap: 3rem;
         grid-template-columns: 1fr;
         padding: 2rem;
+      }
+
+      .overview-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        .overview-section {
+          grid-template-columns: 1fr;
+        }
       }
 
       .project-media {
@@ -65,7 +76,6 @@
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
                     0 4px 6px -2px rgba(0, 0, 0, 0.05);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 2rem;
       }
 
       .section-card:hover {
@@ -164,65 +174,62 @@
       </header>
 
       <main>
-        <!-- Project Media Section -->
-        <section class="project-media" style="margin-bottom: 3rem;">
-          <img src="MYSITE/PathFindersDemo.gif" alt="PathFinders Demo" style="width: 100%; display: block;">
-        </section>
+        <!-- Overview Section with side-by-side layout -->
+        <div class="overview-section">
+          <div class="project-media">
+            <img src="/PathFindersDemo.gif" alt="PathFinders Demo" style="width: 100%; display: block;">
+          </div>
 
-        <!-- Project Details -->
-        <div class="project-content">
-          <!-- Overview Section -->
           <section class="section-card">
             <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Project Overview</h2>
-            <p style="color: #444; line-height: 1.8;">
+            <p id="project-overview" style="color: #444; line-height: 1.8;">
               <strong>PathFinders</strong> is a sophisticated Python-based maze solver and visualizer that demonstrates the beauty and efficiency of different pathfinding algorithms. What started as a class project evolved into a comprehensive tool for understanding how different algorithms approach the challenge of finding optimal paths.
               <br><br>
               The system generates random mazes with guaranteed solvability, featuring adjustable complexity and size. Through an intuitive GUI, users can watch in real-time as different algorithms navigate through the maze, providing a unique educational experience in algorithm visualization.
             </p>
           </section>
-
-          <!-- Technical Details Section -->
-          <section class="section-card">
-            <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Technical Implementation</h2>
-            <div style="margin-bottom: 2rem;">
-              <h3 style="font-size: 1.2rem; font-weight: 600; color: #444; margin-bottom: 1rem;">Implemented Algorithms</h3>
-              <div class="list-item">Breadth-First Search (BFS) - Optimal for unweighted paths</div>
-              <div class="list-item">Depth-First Search (DFS) - Memory-efficient maze exploration</div>
-              <div class="list-item">A* Search - Optimal pathfinding with heuristics</div>
-              <div class="list-item">Bidirectional Search - Simultaneous path exploration</div>
-              <div class="list-item">Simulated Annealing - Probabilistic path optimization</div>
-              <div class="list-item">Dijkstra's Algorithm - Optimal weighted pathfinding</div>
-            </div>
-          </section>
-
-          <!-- Technologies Section -->
-          <section class="section-card">
-            <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Technologies Used</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-              <span class="skill-badge">Python</span>
-              <span class="skill-badge">PyGame</span>
-              <span class="skill-badge">Algorithm Design</span>
-              <span class="skill-badge">Path Finding</span>
-              <span class="skill-badge">GUI Development</span>
-            </div>
-          </section>
-
-          <!-- Source Code Section -->
-          <section class="section-card" style="text-align: center;">
-            <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Explore the Code</h2>
-            <a href="https://github.com/siakhorsand/PathFinders" 
-               class="github-button"
-               target="_blank">
-              <i class="fab fa-github"></i>
-              View on GitHub
-            </a>
-          </section>
         </div>
+
+        <!-- Technical Details Section -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Technical Implementation</h2>
+          <div style="margin-bottom: 2rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; color: #444; margin-bottom: 1rem;">Implemented Algorithms</h3>
+            <div class="list-item">Breadth-First Search (BFS) - Optimal for unweighted paths</div>
+            <div class="list-item">Depth-First Search (DFS) - Memory-efficient maze exploration</div>
+            <div class="list-item">A* Search - Optimal pathfinding with heuristics</div>
+            <div class="list-item">Bidirectional Search - Simultaneous path exploration</div>
+            <div class="list-item">Simulated Annealing - Probabilistic path optimization</div>
+            <div class="list-item">Dijkstra's Algorithm - Optimal weighted pathfinding</div>
+          </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Technologies Used</h2>
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">PyGame</span>
+            <span class="skill-badge">Algorithm Design</span>
+            <span class="skill-badge">Path Finding</span>
+            <span class="skill-badge">GUI Development</span>
+          </div>
+        </section>
+
+        <!-- Source Code Section -->
+        <section class="section-card" style="text-align: center;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Explore the Code</h2>
+          <a href="https://github.com/siakhorsand/PathFinders" 
+             class="github-button"
+             target="_blank">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+        </section>
       </main>
     </div>
 
     <script>
-      // Add smooth scroll behavior
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -232,7 +239,6 @@
         });
       });
 
-      // Add intersection observer for fade-in effect
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(entry => {
@@ -245,7 +251,6 @@
         { threshold: 0.1 }
       );
 
-      // Observe all section cards
       document.querySelectorAll('.section-card').forEach((section) => {
         section.style.opacity = "0";
         section.style.transform = "translateY(20px)";
@@ -253,5 +258,61 @@
         observer.observe(section);
       });
     </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const projectOverviewEl = document.getElementById('project-overview');
+        const originalHTML = projectOverviewEl.innerHTML;
+        const lines = originalHTML.split(/<br\s*\/?>/);
+        const characters = 'abcdefghijklmnopqrstuvwxyz_';
+        let interval;
+        let iteration = 0;
+        const totalIterations = 10;
+      
+        function transformLine(line, iteration, totalIterations) {
+          const progress = iteration / totalIterations;
+          const charsToReveal = Math.floor(line.length * progress);
+          let transformed = "";
+          for (let j = 0; j < line.length; j++) {
+            if (j < charsToReveal) {
+              transformed += line[j];
+            } else {
+              // Preserve HTML tags, spaces, and punctuation
+              if (line[j].match(/[<>\/]/) || line[j] === ' ' || line[j].match(/[.,!?]/)) {
+                transformed += line[j];
+              } else {
+                transformed += characters[Math.floor(Math.random() * characters.length)];
+              }
+            }
+          }
+          return transformed;
+        }
+      
+        function startTransformationAnimation() {
+          iteration = 0;
+          clearInterval(interval);
+          interval = setInterval(() => {
+            iteration++;
+            const newLines = lines.map(line => transformLine(line, iteration, totalIterations));
+            projectOverviewEl.innerHTML = newLines.join('<br>');
+            if (iteration >= totalIterations) {
+              clearInterval(interval);
+              projectOverviewEl.innerHTML = originalHTML;
+            }
+          }, 60);
+        }
+      
+        // Start animation when the element comes into view
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startTransformationAnimation();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+      
+        observer.observe(projectOverviewEl);
+      });
+      </script>
   </body>
 </html>

@@ -628,3 +628,18 @@ video {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.text-pressure-title {
+  display: inline-block;
+  width: 100%;
+}
+
+.text-pressure-title span {
+  display: inline-block;
+  transition: font-weight 0.3s ease, text-shadow 0.3s ease;
+}
+
+.header-pressure {
+  position: relative;
+  z-index: 1;
+}

@@ -3,7 +3,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Add these in the head section -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sia Khorsand</title>
+
+<!-- Import fonts and icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
 <script type="importmap">
   {
     "imports": {
@@ -13,39 +22,7 @@
     }
   }
 </script>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sia Khorsand</title>
-    <style>
-
-      @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
-      
-      @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
-      
-      @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
-      
-      @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
-      
-      /*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
-
-      .text-pressure-title {
-  display: inline-block;
-  width: 100%;
-}
-
-.text-pressure-title span {
-  display: inline-block;
-  transition: font-weight 0.3s ease, text-shadow 0.3s ease;
-}
-
-.header-pressure {
-  position: relative;
-  z-index: 1;
-}
-      *,
+<style>
       :after,
       :before {
         border: 0 solid hwb(220 90% 8%);
@@ -782,72 +759,13 @@
         opacity: 0.5;
         pointer-events: none;
       }</style>
-      <script type="module">
-        import React from 'react';
-        import { createRoot } from 'react-dom/client';
-    
-        // Define the HeaderPressure component inline for testing
-        const HeaderPressure = ({ text, className = '' }) => {
-          return React.createElement('div', { className },
-            text.split('').map((char, i) => 
-              React.createElement('span', { 
-                key: i,
-                style: {
-                  display: 'inline-block',
-                  transition: 'font-weight 0.3s ease'
-                }
-              }, char)
-            )
-          );
-        };
-    
-        // Define headers
-        const headerElements = [
-          {
-            id: 'nameHeader',
-            text: 'Sia Khorsand',
-            className: 'text-4xl font-title text-primary-950'
-          },
-          {
-            id: 'aboutMeHeader',
-            text: 'About Me',
-            className: 'text-2xl font-title text-primary-950'
-          },
-          {
-            id: 'projectsHeader',
-            text: 'Projects',
-            className: 'text-2xl font-title text-primary-950'
-          },
-          {
-            id: 'skillsHeader',
-            text: 'Skills',
-            className: 'text-2xl font-title text-primary-950'
-          },
-          {
-            id: 'experiencesHeader',
-            text: 'Experiences',
-            className: 'text-2xl font-title text-primary-950'
-          }
-        ];
-    
-        // Wait for DOM to load
-        document.addEventListener('DOMContentLoaded', () => {
-          headerElements.forEach(({ id, text, className }) => {
-            const container = document.getElementById(id);
-            if (container) {
-              const root = createRoot(container);
-              root.render(React.createElement(HeaderPressure, { text, className }));
-            }
-          });
-        });
-      </script>
+
     </head>
   </head>
   <body>
     <div id="webcrumbs"><div class="min-h-[1000px] bg-white rounded-lg shadow-lg"> 
       <header class="bg-neutral-200 p-6"> 
-        <div id="nameHeader" class="text-center sm:text-left"></div>
-        <p class="mt-2 text-neutral-700 text-center sm:text-left">
+        <h1 class="text-4xl font-title text-primary-950 text-center sm:text-left">Sia Khorsand</h1>        <p class="mt-2 text-neutral-700 text-center sm:text-left">
           Showcasing my projects, experiences, and journey in tech and computation.
         </p>
       </header>
@@ -901,7 +819,7 @@
          <!-- ABOUT ME SECTION-->
          <main class="flex-1">
           <section class="mb-6">
-            <div id="aboutMeHeader"></div>
+            <h2 class="text-2xl font-title text-primary-950">About Me</h2>
             <p id="about-me" class="mt-4 text-neutral-700 leading-relaxed">
               Hi! I'm Sia. I am a rising senior at UC San Diego, majoring in Cognitive Science with a specialization in Machine Learning and Neural Computation, and minoring in Computer Science. My passion lies at the intersection between software development, artificial intelligence, human-computer interaction, and research and data science—essentially, anywhere technology meets people in meaningful ways.<br>
               I thrive on solving problems, whether it's designing intuitive software solutions, training and fine tuning machine learning models, or diving into data to extract insights for research and development.<br>
@@ -912,8 +830,8 @@
           
       <!---- PROJECTS SECTION ---->
       <a href="/src/Proj1.html" class="project-link">
-            <div id="projectsHeader" class="text-2xl font-title text-primary-950"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <h2 class="text-2xl font-title text-primary-950">Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
               <!-- Project 1 -->
               <div class="project-card bg-neutral-100 rounded-md p-4 transition-transform duration-300 hover:shadow-xl">
                 <img src="PathFinders.tiff" alt="Path Finders" class="w-full h-[120px] rounded-md object-cover mb-2"/>
@@ -1057,7 +975,7 @@
           </section>
  
  <section class="mb-6"> 
-  <div id="skillsHeader" class="text-2xl font-title text-primary-950"></div>
+  <h2 class="text-2xl font-title text-primary-950">Skills</h2>
   <div class="flex flex-wrap gap-4 mt-4">
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> Java </div>
   <div class="bg-primary-100 text-primary-950 font-medium py-2 px-4 rounded-full shadow-md transition-transform duration-300 hover:scale-[1.1] hover:bg-primary-200"> C++ </div>
@@ -1073,8 +991,9 @@
   </div> 
   </section> 
   <section> 
-    <div id="experiencesHeader" class="text-2xl font-title text-primary-950">
-    </div>
+    <h2 class="text-2xl font-title text-primary-950">Experiences</h2>
+
+  </div>
     <ul class="mt-4 space-y-4"> <li class="bg-neutral-100 rounded-md p-4">
     <p class="font-bold text-neutral-950">Software Engineering Intern</p> <p class="text-neutral-600">Twilio | June 2022 - August 2022</p> <p class="mt-2 text-neutral-700"> In Progress... </p> </li> <li class="bg-neutral-100 rounded-md p-4"> 
     <p class="font-bold text-neutral-950"> Website Developer</p> <p class="text-neutral-600">Self-employed | May 2021 - Dec 2021</p> 
