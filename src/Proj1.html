@@ -15,11 +15,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PathFinders Project | Sia Khorsand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <style>
-      @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
-      @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
-      @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
-      @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
+      :root {
+        /* Light mode colors */
+        --bg-color: #f8f9fa;
+        --bg-gradient: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        --text-primary: #212529;
+        --text-secondary: #495057;
+        --text-tertiary: #6c757d;
+        --card-bg: #ffffff;
+        --accent-primary: #5b46ff;
+        --accent-light: #e9e5ff;
+        --accent-medium: #d5ccff;
+        --accent-dark: #4837cc;
+        --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --card-border: rgba(0, 0, 0, 0.05);
+      }
+
+      .dark {
+        /* Dark mode colors */
+        --bg-color: #121212;
+        --bg-gradient: linear-gradient(135deg, #121212, #1e1e1e);
+        --text-primary: #e9ecef;
+        --text-secondary: #ced4da;
+        --text-tertiary: #adb5bd;
+        --card-bg: #1e1e1e;
+        --accent-primary: #7c6aff;
+        --accent-light: #2a256e;
+        --accent-medium: #372e8c;
+        --accent-dark: #9f91ff;
+        --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+        --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        --card-border: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Scroll progress indicator */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background-color: var(--accent-primary);
+        width: 0%;
+        z-index: 100;
+        transition: width 0.1s ease-out;
+      }
+
+      /* Dark mode toggle */
+      .theme-toggle {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: var(--accent-light);
+        color: var(--accent-primary);
+        border: none;
+        border-radius: 9999px;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: var(--button-shadow);
+        z-index: 10;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        background: var(--accent-medium);
+      }
 
       .project-container {
         max-width: 1400px;
@@ -50,10 +119,9 @@
       .project-media {
         border-radius: 1.5rem;
         overflow: hidden;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        box-shadow: var(--card-shadow);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: white;
+        background: var(--card-bg);
       }
 
       .project-media:hover {
@@ -70,11 +138,11 @@
       }
 
       .section-card {
-        background: white;
+        background: var(--card-bg);
+        color: var(--text-primary);
         border-radius: 1.5rem;
         padding: 2rem;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-                    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        box-shadow: var(--card-shadow);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
@@ -85,8 +153,8 @@
       }
 
       .skill-badge {
-        background-color: rgb(233, 229, 255);
-        color: rgb(34, 1, 116);
+        background-color: var(--accent-light);
+        color: var(--accent-primary);
         font-weight: 500;
         padding: 0.75rem 1.5rem;
         border-radius: 9999px;
@@ -98,12 +166,12 @@
 
       .skill-badge:hover {
         transform: scale(1.05);
-        background-color: rgb(213, 207, 255);
+        background-color: var(--accent-medium);
       }
 
       .github-button {
-        background: rgb(233, 229, 255);
-        color: rgb(34, 1, 116);
+        background: var(--accent-light);
+        color: var(--accent-primary);
         padding: 1rem 2rem;
         border-radius: 9999px;
         font-weight: 600;
@@ -115,7 +183,7 @@
       }
 
       .github-button:hover {
-        background: rgb(213, 207, 255);
+        background: var(--accent-medium);
         transform: translateY(-2px);
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
@@ -124,7 +192,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        color: rgb(34, 1, 116);
+        color: var(--accent-primary);
         text-decoration: none;
         font-weight: 500;
         transition: transform 0.3s ease;
@@ -134,16 +202,28 @@
 
       .back-link:hover {
         transform: translateX(-5px);
-        background: rgba(233, 229, 255, 0.5);
+        background: var(--accent-light);
       }
 
       body {
         line-height: 1.6;
         padding: 2rem;
         min-height: 100vh;
-        background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-        color: #333;
+        background: var(--bg-gradient);
+        color: var(--text-primary);
         font-family: 'Open Sans', sans-serif;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--text-primary);
+        font-family: 'Lato', sans-serif;
+        transition: color 0.3s ease;
+      }
+
+      p {
+        color: var(--text-secondary);
+        transition: color 0.3s ease;
       }
 
       .list-item {
@@ -151,16 +231,25 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        color: var(--text-secondary);
       }
 
       .list-item:before {
         content: "•";
-        color: rgb(34, 1, 116);
+        color: var(--accent-primary);
         font-weight: bold;
       }
     </style>
   </head>
   <body>
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    
     <div class="project-container">
       <header class="section-card" style="margin-bottom: 2rem;">
         <nav style="margin-bottom: 1rem;">
@@ -169,8 +258,8 @@
             Back to Projects
           </a>
         </nav>
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: rgb(34, 1, 116); margin: 0;">PathFinders</h1>
-        <p style="color: #666; margin-top: 0.5rem;">A visual exploration of pathfinding algorithms</p>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">PathFinders</h1>
+        <p style="margin-top: 0.5rem;">A visual exploration of pathfinding algorithms</p>
       </header>
 
       <main>
@@ -181,8 +270,8 @@
           </div>
 
           <section class="section-card">
-            <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Project Overview</h2>
-            <p id="project-overview" style="color: #444; line-height: 1.8;">
+            <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Project Overview</h2>
+            <p id="project-overview" style="line-height: 1.8;">
               <strong>PathFinders</strong> is a sophisticated Python-based maze solver and visualizer that demonstrates the beauty and efficiency of different pathfinding algorithms. What started as a class project evolved into a comprehensive tool for understanding how different algorithms approach the challenge of finding optimal paths.
               <br><br>
               The system generates random mazes with guaranteed solvability, featuring adjustable complexity and size. Through an intuitive GUI, users can watch in real-time as different algorithms navigate through the maze, providing a unique educational experience in algorithm visualization.
@@ -192,9 +281,9 @@
 
         <!-- Technical Details Section -->
         <section class="section-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Technical Implementation</h2>
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technical Implementation</h2>
           <div style="margin-bottom: 2rem;">
-            <h3 style="font-size: 1.2rem; font-weight: 600; color: #444; margin-bottom: 1rem;">Implemented Algorithms</h3>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implemented Algorithms</h3>
             <div class="list-item">Breadth-First Search (BFS) - Optimal for unweighted paths</div>
             <div class="list-item">Depth-First Search (DFS) - Memory-efficient maze exploration</div>
             <div class="list-item">A* Search - Optimal pathfinding with heuristics</div>
@@ -206,7 +295,7 @@
 
         <!-- Technologies Section -->
         <section class="section-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Technologies Used</h2>
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technologies Used</h2>
           <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
             <span class="skill-badge">Python</span>
             <span class="skill-badge">PyGame</span>
@@ -218,7 +307,7 @@
 
         <!-- Source Code Section -->
         <section class="section-card" style="text-align: center;">
-          <h2 style="font-size: 1.8rem; font-weight: 600; color: rgb(34, 1, 116); margin-bottom: 1.5rem;">Explore the Code</h2>
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Explore the Code</h2>
           <a href="https://github.com/siakhorsand/PathFinders" 
              class="github-button"
              target="_blank">
@@ -230,35 +319,41 @@
     </div>
 
     <script>
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
+
+      const scrollProgress = document.querySelector('.scroll-progress');
+      
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollPosition / totalHeight) * 100;
+        scrollProgress.style.width = `${scrollPercentage}%`;
+      });
+      
+
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+    
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+
+        if (document.documentElement.classList.contains('dark')) {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
       });
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-
-      document.querySelectorAll('.section-card').forEach((section) => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(20px)";
-        section.style.transition = "all 0.5s ease-out";
-        observer.observe(section);
-      });
-    </script>
-    <script>
       document.addEventListener('DOMContentLoaded', () => {
         const projectOverviewEl = document.getElementById('project-overview');
         const originalHTML = projectOverviewEl.innerHTML;
@@ -276,7 +371,6 @@
             if (j < charsToReveal) {
               transformed += line[j];
             } else {
-              // Preserve HTML tags, spaces, and punctuation
               if (line[j].match(/[<>\/]/) || line[j] === ' ' || line[j].match(/[.,!?]/)) {
                 transformed += line[j];
               } else {
@@ -301,7 +395,6 @@
           }, 60);
         }
       
-        // Start animation when the element comes into view
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -313,6 +406,25 @@
       
         observer.observe(projectOverviewEl);
       });
-      </script>
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.section-card').forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "all 0.5s ease-out";
+        observer.observe(section);
+      });
+    </script>
   </body>
 </html>
