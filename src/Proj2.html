@@ -14,8 +14,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- REPLACE: Project Title -->
-    <title>Project Title | Sia Khorsand</title>
+    <title>ShapeNet Project | Sia Khorsand</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
@@ -259,27 +258,23 @@
             Back to Projects
           </a>
         </nav>
-        <!-- REPLACE: Project Title -->
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">Project Title</h1>
-        <!-- REPLACE: Project Tagline -->
-        <p style="margin-top: 0.5rem;">Project tagline or short description</p>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">ShapeNet</h1>
+        <p style="margin-top: 0.5rem;">A machine learning-powered shape recognition system</p>
       </header>
 
       <main>
         <!-- Overview Section with side-by-side layout -->
         <div class="overview-section">
           <div class="project-media">
-            <!-- REPLACE: Project Image/Demo -->
-            <img src="/api/placeholder/800/450" alt="Project Demo" style="width: 100%; display: block;">
+            <img src="/ShapeNet.gif" alt="ShapeNet Demo" style="width: 100%; display: block;">
           </div>
 
           <section class="section-card">
             <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Project Overview</h2>
-            <!-- REPLACE: Project Overview Text -->
             <p id="project-overview" style="line-height: 1.8;">
-              <strong>Project Name</strong> is a description of what this project does and why it's interesting. Add a paragraph explaining the motivation, goals, and overall purpose of this project.
+              <strong>ShapeNet</strong> is a machine learning project that recognizes hand-drawn shapes in real-time using a web interface. The system allows users to draw shapes on an HTML canvas, and the trained neural network predicts which shape was drawn with remarkable accuracy.
               <br><br>
-              Add more details here about what makes this project unique, what challenges it addresses, or what you learned while building it.
+              The current model can recognize five different shapes: circles, squares, triangles, hexagons, and octagons. The application provides real-time feedback as users draw, showing not only the predicted shape but also a confidence score and probability distribution across all possible shape classifications.
             </p>
           </section>
         </div>
@@ -288,22 +283,22 @@
         <section class="section-card" style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technical Implementation</h2>
           <div style="margin-bottom: 2rem;">
-            <!-- REPLACE: Section Title -->
             <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Key Features</h3>
-            <!-- REPLACE: Feature List -->
-            <div class="list-item">Feature 1 - Description of this feature</div>
-            <div class="list-item">Feature 2 - Description of this feature</div>
-            <div class="list-item">Feature 3 - Description of this feature</div>
-            <div class="list-item">Feature 4 - Description of this feature</div>
-            <div class="list-item">Feature 5 - Description of this feature</div>
-            <div class="list-item">Feature 6 - Description of this feature</div>
+            <div class="list-item">Real-time shape recognition as you draw on the canvas</div>
+            <div class="list-item">Multi-class neural network classification trained on shape dataset</div>
+            <div class="list-item">Visual probability distribution showing confidence across all shape categories</div>
+            <div class="list-item">Optimized for quick response with minimal latency</div>
+            <div class="list-item">Responsive canvas drawing interface with immediate feedback</div>
+            <div class="list-item">Clean, modern UI with GitHub-inspired dark theme</div>
           </div>
           
-          <!--  Additional Technical Section - Remove if not needed -->
           <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implementation Challenges</h3>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implementation Details</h3>
             <p style="margin-bottom: 1rem;">
-              Describe any interesting challenges you faced while implementing this project and how you overcame them.
+              The frontend utilizes HTML5 Canvas for drawing and JavaScript to capture user input. When a user completes a drawing, the canvas image is converted to base64 and sent to the backend Flask server. The server preprocesses the image by resizing it to 28x28 pixels, normalizing pixel values, and inverting colors to match the training data format.
+            </p>
+            <p style="margin-bottom: 1rem;">
+              The TensorFlow/Keras model processes this standardized input and returns prediction probabilities for each shape class. The application then displays these results in an intuitive interface with animated probability bars, making it easy to understand the model's confidence level for each possible shape.
             </p>
           </div>
         </section>
@@ -312,44 +307,42 @@
         <section class="section-card" style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technologies Used</h2>
           <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-            <!-- REPLACE: Technology Badges -->
-            <span class="skill-badge">Technology 1</span>
-            <span class="skill-badge">Technology 2</span>
-            <span class="skill-badge">Technology 3</span>
-            <span class="skill-badge">Technology 4</span>
-            <span class="skill-badge">Technology 5</span>
+            <span class="skill-badge">TensorFlow/Keras</span>
+            <span class="skill-badge">Flask</span>
+            <span class="skill-badge">HTML5 Canvas</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">NumPy</span>
+            <span class="skill-badge">PIL/Pillow</span>
+            <span class="skill-badge">CSS3</span>
           </div>
         </section>
 
-        <!-- Source Code Section - Remove if project isn't on GitHub -->
+        <!-- Future Work Section -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Future Enhancements</h2>
+          <div class="list-item">Expand model to recognize additional shape types</div>
+          <div class="list-item">Implement progressive learning to improve accuracy over time</div>
+          <div class="list-item">Add a training mode where users can contribute labeled examples</div>
+          <div class="list-item">Optimize model size for faster mobile performance</div>
+          <div class="list-item">Create an export feature to save and share drawings with predictions</div>
+        </section>
+
+        <!-- Source Code Section -->
         <section class="section-card" style="text-align: center;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Explore the Code</h2>
-          <!-- REPLACE: GitHub URL -->
-          <a href="https://github.com/siakhorsand/project-name" 
+          <a href="https://github.com/siakhorsand/ShapeNet" 
              class="github-button"
              target="_blank">
             <i class="fab fa-github"></i>
             View on GitHub
           </a>
         </section>
-        
-        <!--  Results/Outcome Section - Remove if not needed -->
-        <!--
-        <section class="section-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Results & Impact</h2>
-          <p style="margin-bottom: 1rem;">
-            Describe the outcomes of this project, including any metrics, user feedback, or personal growth.
-          </p>
-          <div class="list-item">Result 1 - Description</div>
-          <div class="list-item">Result 2 - Description</div>
-          <div class="list-item">Result 3 - Description</div>
-        </section>
-        -->
       </main>
     </div>
 
     <script>
-
+      // Scroll progress bar
       const scrollProgress = document.querySelector('.scroll-progress');
       
       window.addEventListener('scroll', () => {
@@ -359,20 +352,23 @@
         scrollProgress.style.width = `${scrollPercentage}%`;
       });
       
+      // Dark mode toggle
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       
-
+      // Check if user has a theme preference stored
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
         themeIcon.classList.remove('fa-moon');
         themeIcon.classList.add('fa-sun');
       }
-
+      
+      // Theme toggle functionality
       themeToggle.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark');
         
+        // Toggle icon
         if (document.documentElement.classList.contains('dark')) {
           themeIcon.classList.remove('fa-moon');
           themeIcon.classList.add('fa-sun');
@@ -384,7 +380,7 @@
         }
       });
 
-
+      // Text scrambling/decryption animation
       document.addEventListener('DOMContentLoaded', () => {
         const projectOverviewEl = document.getElementById('project-overview');
         const originalHTML = projectOverviewEl.innerHTML;
@@ -427,6 +423,7 @@
           }, 60);
         }
       
+        // Start animation when the element comes into view
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -439,6 +436,7 @@
         observer.observe(projectOverviewEl);
       });
 
+      // Animate sections on scroll
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(entry => {
