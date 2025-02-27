@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.2.0",
+          "react-dom": "https://esm.sh/react-dom@18.2.0",
+          "react-dom/client": "https://esm.sh/react-dom@18.2.0/client"
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- REPLACE: Project Title -->
+    <title>Project Title | Sia Khorsand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <style>
+      :root {
+        /* Light mode colors */
+        --bg-color: #f8f9fa;
+        --bg-gradient: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        --text-primary: #212529;
+        --text-secondary: #495057;
+        --text-tertiary: #6c757d;
+        --card-bg: #ffffff;
+        --accent-primary: #5b46ff;
+        --accent-light: #e9e5ff;
+        --accent-medium: #d5ccff;
+        --accent-dark: #4837cc;
+        --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --card-border: rgba(0, 0, 0, 0.05);
+      }
+
+      .dark {
+        /* Dark mode colors */
+        --bg-color: #121212;
+        --bg-gradient: linear-gradient(135deg, #121212, #1e1e1e);
+        --text-primary: #e9ecef;
+        --text-secondary: #ced4da;
+        --text-tertiary: #adb5bd;
+        --card-bg: #1e1e1e;
+        --accent-primary: #7c6aff;
+        --accent-light: #2a256e;
+        --accent-medium: #372e8c;
+        --accent-dark: #9f91ff;
+        --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+        --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        --card-border: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Scroll progress indicator */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background-color: var(--accent-primary);
+        width: 0%;
+        z-index: 100;
+        transition: width 0.1s ease-out;
+      }
+
+      /* Dark mode toggle */
+      .theme-toggle {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: var(--accent-light);
+        color: var(--accent-primary);
+        border: none;
+        border-radius: 9999px;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: var(--button-shadow);
+        z-index: 10;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        background: var(--accent-medium);
+      }
+
+      .project-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .project-content {
+        display: grid;
+        gap: 3rem;
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+
+      .overview-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        .overview-section {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .project-media {
+        border-radius: 1.5rem;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: var(--card-bg);
+      }
+
+      .project-media:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15),
+                    0 15px 15px -5px rgba(0, 0, 0, 0.08);
+      }
+
+      .project-media img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .section-card {
+        background: var(--card-bg);
+        color: var(--text-primary);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .section-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.15),
+                    0 8px 8px -2px rgba(0, 0, 0, 0.08);
+      }
+
+      .skill-badge {
+        background-color: var(--accent-light);
+        color: var(--accent-primary);
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        display: inline-block;
+        margin: 0.5rem;
+      }
+
+      .skill-badge:hover {
+        transform: scale(1.05);
+        background-color: var(--accent-medium);
+      }
+
+      .github-button {
+        background: var(--accent-light);
+        color: var(--accent-primary);
+        padding: 1rem 2rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .github-button:hover {
+        background: var(--accent-medium);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--accent-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: transform 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+      }
+
+      .back-link:hover {
+        transform: translateX(-5px);
+        background: var(--accent-light);
+      }
+
+      body {
+        line-height: 1.6;
+        padding: 2rem;
+        min-height: 100vh;
+        background: var(--bg-gradient);
+        color: var(--text-primary);
+        font-family: 'Open Sans', sans-serif;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--text-primary);
+        font-family: 'Lato', sans-serif;
+        transition: color 0.3s ease;
+      }
+
+      p {
+        color: var(--text-secondary);
+        transition: color 0.3s ease;
+      }
+
+      .list-item {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      .list-item:before {
+        content: "•";
+        color: var(--accent-primary);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    
+    <div class="project-container">
+      <header class="section-card" style="margin-bottom: 2rem;">
+        <nav style="margin-bottom: 1rem;">
+          <a href="/" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Projects
+          </a>
+        </nav>
+        <!-- REPLACE: Project Title -->
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">Project Title</h1>
+        <!-- REPLACE: Project Tagline -->
+        <p style="margin-top: 0.5rem;">Project tagline or short description</p>
+      </header>
+
+      <main>
+        <!-- Overview Section with side-by-side layout -->
+        <div class="overview-section">
+          <div class="project-media">
+            <!-- REPLACE: Project Image/Demo -->
+            <img src="/api/placeholder/800/450" alt="Project Demo" style="width: 100%; display: block;">
+          </div>
+
+          <section class="section-card">
+            <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Project Overview</h2>
+            <!-- REPLACE: Project Overview Text -->
+            <p id="project-overview" style="line-height: 1.8;">
+              <strong>Project Name</strong> is a description of what this project does and why it's interesting. Add a paragraph explaining the motivation, goals, and overall purpose of this project.
+              <br><br>
+              Add more details here about what makes this project unique, what challenges it addresses, or what you learned while building it.
+            </p>
+          </section>
+        </div>
+
+        <!-- Technical Details Section -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technical Implementation</h2>
+          <div style="margin-bottom: 2rem;">
+            <!-- REPLACE: Section Title -->
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Key Features</h3>
+            <!-- REPLACE: Feature List -->
+            <div class="list-item">Feature 1 - Description of this feature</div>
+            <div class="list-item">Feature 2 - Description of this feature</div>
+            <div class="list-item">Feature 3 - Description of this feature</div>
+            <div class="list-item">Feature 4 - Description of this feature</div>
+            <div class="list-item">Feature 5 - Description of this feature</div>
+            <div class="list-item">Feature 6 - Description of this feature</div>
+          </div>
+          
+          <!--  Additional Technical Section - Remove if not needed -->
+          <div>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implementation Challenges</h3>
+            <p style="margin-bottom: 1rem;">
+              Describe any interesting challenges you faced while implementing this project and how you overcame them.
+            </p>
+          </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technologies Used</h2>
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <!-- REPLACE: Technology Badges -->
+            <span class="skill-badge">Technology 1</span>
+            <span class="skill-badge">Technology 2</span>
+            <span class="skill-badge">Technology 3</span>
+            <span class="skill-badge">Technology 4</span>
+            <span class="skill-badge">Technology 5</span>
+          </div>
+        </section>
+
+        <!-- Source Code Section - Remove if project isn't on GitHub -->
+        <section class="section-card" style="text-align: center;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Explore the Code</h2>
+          <!-- REPLACE: GitHub URL -->
+          <a href="https://github.com/siakhorsand/project-name" 
+             class="github-button"
+             target="_blank">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+        </section>
+        
+        <!--  Results/Outcome Section - Remove if not needed -->
+        <!--
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Results & Impact</h2>
+          <p style="margin-bottom: 1rem;">
+            Describe the outcomes of this project, including any metrics, user feedback, or personal growth.
+          </p>
+          <div class="list-item">Result 1 - Description</div>
+          <div class="list-item">Result 2 - Description</div>
+          <div class="list-item">Result 3 - Description</div>
+        </section>
+        -->
+      </main>
+    </div>
+
+    <script>
+
+      const scrollProgress = document.querySelector('.scroll-progress');
+      
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollPosition / totalHeight) * 100;
+        scrollProgress.style.width = `${scrollPercentage}%`;
+      });
+      
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+      
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        
+        if (document.documentElement.classList.contains('dark')) {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const projectOverviewEl = document.getElementById('project-overview');
+        const originalHTML = projectOverviewEl.innerHTML;
+        const lines = originalHTML.split(/<br\s*\/?>/);
+        const characters = 'abcdefghijklmnopqrstuvwxyz_';
+        let interval;
+        let iteration = 0;
+        const totalIterations = 10;
+      
+        function transformLine(line, iteration, totalIterations) {
+          const progress = iteration / totalIterations;
+          const charsToReveal = Math.floor(line.length * progress);
+          let transformed = "";
+          for (let j = 0; j < line.length; j++) {
+            if (j < charsToReveal) {
+              transformed += line[j];
+            } else {
+              // Preserve HTML tags, spaces, and punctuation
+              if (line[j].match(/[<>\/]/) || line[j] === ' ' || line[j].match(/[.,!?]/)) {
+                transformed += line[j];
+              } else {
+                transformed += characters[Math.floor(Math.random() * characters.length)];
+              }
+            }
+          }
+          return transformed;
+        }
+      
+        function startTransformationAnimation() {
+          iteration = 0;
+          clearInterval(interval);
+          interval = setInterval(() => {
+            iteration++;
+            const newLines = lines.map(line => transformLine(line, iteration, totalIterations));
+            projectOverviewEl.innerHTML = newLines.join('<br>');
+            if (iteration >= totalIterations) {
+              clearInterval(interval);
+              projectOverviewEl.innerHTML = originalHTML;
+            }
+          }, 60);
+        }
+      
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startTransformationAnimation();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+      
+        observer.observe(projectOverviewEl);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.section-card').forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "all 0.5s ease-out";
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
