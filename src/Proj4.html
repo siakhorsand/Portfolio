@@ -14,8 +14,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- REPLACE: Project Title -->
-    <title>Project Title | Sia Khorsand</title>
+    <title>Clustering Algorithms Visualization | Sia Khorsand</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
@@ -240,13 +239,44 @@
         color: var(--accent-primary);
         font-weight: bold;
       }
+
+      .code-block {
+        background-color: var(--bg-color);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: monospace;
+        overflow-x: auto;
+      }
+      
+      .algorithm-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      
+      .algorithm-card {
+        background-color: var(--accent-light);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        color: var(--text-primary);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      @media (max-width: 768px) {
+        .algorithm-comparison {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- Scroll progress indicator -->
+
     <div class="scroll-progress"></div>
     
-    <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
       <i class="fas fa-moon"></i>
     </button>
@@ -259,97 +289,233 @@
             Back to Projects
           </a>
         </nav>
-        <!-- REPLACE: Project Title -->
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">Project Title</h1>
-        <!-- REPLACE: Project Tagline -->
-        <p style="margin-top: 0.5rem;">Project tagline or short description</p>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">Clustering Algorithms Visualization</h1>
+        <p style="margin-top: 0.5rem;">An interactive web application for visualizing and exploring clustering algorithms</p>
       </header>
 
       <main>
-        <!-- Overview Section with side-by-side layout -->
+
         <div class="overview-section">
           <div class="project-media">
-            <!-- REPLACE: Project Image/Demo -->
-            <img src="/api/placeholder/800/450" alt="Project Demo" style="width: 100%; display: block;">
+            <img src="/KmeansDemo.gif" alt="K-means Clustering Demo" style="width: 100%; display: block;">
           </div>
 
           <section class="section-card">
             <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Project Overview</h2>
-            <!-- REPLACE: Project Overview Text -->
             <p id="project-overview" style="line-height: 1.8;">
-              <strong>Project Name</strong> is a description of what this project does and why it's interesting. Add a paragraph explaining the motivation, goals, and overall purpose of this project.
+              <strong>Clustering Algorithms Visualization</strong> is an interactive web application that allows users to explore unsupervised machine learning clustering techniques on different datasets. Initially developed as a class project focusing on K-means, I expanded it to include an interactive interface to demonstrate clustering algorithms covered in class. 
               <br><br>
-              Add more details here about what makes this project unique, what challenges it addresses, or what you learned while building it.
+              This application provides a hands-on approach to understanding how clustering algorithms work by visualizing their step-by-step execution. Users can select different datasets, adjust the number of clusters, and observe how each algorithm partitions the data points differently, making it an excellent educational tool for machine learning concepts.
             </p>
           </section>
         </div>
 
-        <!-- Technical Details Section -->
         <section class="section-card" style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technical Implementation</h2>
           <div style="margin-bottom: 2rem;">
-            <!-- REPLACE: Section Title -->
             <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Key Features</h3>
-            <!-- REPLACE: Feature List -->
-            <div class="list-item">Feature 1 - Description of this feature</div>
-            <div class="list-item">Feature 2 - Description of this feature</div>
-            <div class="list-item">Feature 3 - Description of this feature</div>
-            <div class="list-item">Feature 4 - Description of this feature</div>
-            <div class="list-item">Feature 5 - Description of this feature</div>
-            <div class="list-item">Feature 6 - Description of this feature</div>
+            <div class="list-item">Real-time visualization of clustering algorithms (K-means, EM, Hierarchical)</div>
+            <div class="list-item">Selection between multiple synthetic datasets with different distributions</div>
+            <div class="list-item">Interactive controls to adjust number of clusters and algorithm parameters</div>
+            <div class="list-item">Flask-based backend with optimized NumPy implementations</div>
+            <div class="list-item">Dynamic frontend rendering of clustering results</div>
+            <div class="list-item">Principal Component Analysis (PCA) for dimensionality reduction</div>
           </div>
           
-          <!--  Additional Technical Section - Remove if not needed -->
           <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implementation Challenges</h3>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Architecture</h3>
             <p style="margin-bottom: 1rem;">
-              Describe any interesting challenges you faced while implementing this project and how you overcame them.
+              The application follows a client-server architecture with a Flask backend and JavaScript frontend:
             </p>
+            <div class="list-item"><strong>Backend:</strong> Python Flask server that handles dataset generation, algorithm execution, and API endpoints</div>
+            <div class="list-item"><strong>Algorithms:</strong> Custom implementations of clustering algorithms using NumPy and SciPy</div>
+            <div class="list-item"><strong>Frontend:</strong> Interactive visualization using HTML5, CSS3, and JavaScript</div>
+            <div class="list-item"><strong>Data Processing:</strong> Dimensionality reduction with PCA for visualization</div>
           </div>
+        </section>
+
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Algorithm Implementations</h2>
+          
+          <div class="algorithm-comparison">
+            <div class="algorithm-card">
+              <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--accent-primary);">K-means</h3>
+              <p>The K-means implementation uses the following steps:</p>
+              <div class="list-item">Randomly initialize K centroids from the data points</div>
+              <div class="list-item">Assign each point to the nearest centroid</div>
+              <div class="list-item">Update centroids based on the mean of assigned points</div>
+              <div class="list-item">Repeat until convergence or max iterations reached</div>
+            </div>
+            
+            <div class="algorithm-card">
+              <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--accent-primary);">Expectation-Maximization (to be implemented)</h3>
+              <p>The EM implementation for Gaussian Mixture Models:</p>
+              <div class="list-item">Initialize means, covariances, and weights</div>
+              <div class="list-item">E-step: Compute responsibilities for each point</div>
+              <div class="list-item">M-step: Update parameters based on responsibilities</div>
+              <div class="list-item">Handle numerical stability with regularization</div>
+            </div>
+          </div>
+          
+          <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Code Highlights</h3>
+            <p style="margin-bottom: 1rem;">
+              One of the core algorithm implementations is the K-means model:
+            </p>
+            
+            <div class="code-block">
+              <pre>class KmeansModel:
+    def __init__(self, X, k, max_iters=100):
+        self.X = X
+        self.k = k
+        self.max_iters = max_iters
+        self.dim = X.shape[1]
+        self.N = X.shape[0]
+
+        indices = np.random.choice(self.N, self.k, replace=False)
+        self.centroids = self.X[indices]
+    
+    def get_labels(self, X, centroids):
+        distances = np.sqrt(((X[:, np.newaxis] - centroids) ** 2).sum(axis=2))
+        return np.argmin(distances, axis=1)
+    
+    def run(self):
+        prev_centroids = None
+        iters = 0
+        
+        while iters < self.max_iters:
+            labels = self.get_labels(self.X, self.centroids)
+            
+            new_centroids = np.array([
+                self.X[labels == k].mean(axis=0) if np.sum(labels == k) > 0 
+                else self.centroids[k] 
+                for k in range(self.k)
+            ])
+
+            if prev_centroids is not None and np.allclose(prev_centroids, new_centroids):
+                break
+                
+            prev_centroids = new_centroids.copy()
+            self.centroids = new_centroids
+            iters += 1
+            
+        return self.get_labels(self.X, self.centroids)</pre>
+            </div>
+          </div>
+          
+          <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Performance Optimizations</h3>
+            <p>The implementations include several optimizations:</p>
+            <div class="list-item">Vectorized operations using NumPy instead of loops for better performance</div>
+            <div class="list-item">Mathematical optimizations in distance calculations</div>
+            <div class="list-item">Numerical stability improvements with regularization</div>
+            <div class="list-item">Efficient data structures for storing intermediate results</div>
+          </div>
+        </section>
+
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Datasets</h2>
+          <p style="margin-bottom: 1.5rem;">
+            The application generates three different datasets to demonstrate how clustering algorithms perform under different data distributions:
+          </p>
+          
+          <div class="list-item">
+            <strong>Dataset X1:</strong> Three blobs with moderate overlap, randomly transformed
+          </div>
+          <div class="list-item">
+            <strong>Dataset X2:</strong> Three distinct clusters with different centers
+          </div>
+          <div class="list-item">
+            <strong>Dataset X3:</strong> Complex dataset with elongated clusters of different sizes and orientations
+          </div>
+          
+          <p style="margin-top: 1.5rem;">
+            These datasets are generated using scikit-learn's make_blobs function and transformed with linear transformations to create more interesting patterns:
+          </p>
+          
+          <div class="code-block">
+            <pre>def get_X3():
+    """Get X3 dataset from notebook implementation"""
+    centers = [[5, 5]]
+    X31, _ = make_blobs(cluster_std=1.5, random_state=20, n_samples=200, centers=centers)
+    X31 = np.dot(X31, np.array([[1.0, 0], [0, 5.0]]))
+    
+    X32, _ = make_blobs(cluster_std=1.5, random_state=20, n_samples=200, centers=centers)
+    X32 = np.dot(X32, np.array([[5.0, 0], [0, 1.0]]))
+    
+    centers = [[7, 7]]
+    X33, _ = make_blobs(cluster_std=1.5, random_state=20, n_samples=100, centers=centers)
+    X33 = np.dot(X33, np.random.RandomState(0).randn(2, 2))
+    
+    X3 = np.vstack((X31, X32, X33))
+    return X3</pre>
+          </div>
+        </section>
+
+  
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Project Evolution</h2>
+          <p style="margin-bottom: 1rem;">
+            The project has evolved significantly over time:
+          </p>
+          
+          <div class="list-item"><strong>Phase 1:</strong> Initial K-means implementation and visualization (A1)</div>
+          <div class="list-item"><strong>Phase 2:</strong> Addition of EM and Hierarchical clustering algorithms (A2)</div>
+          <div class="list-item"><strong>Phase 3:</strong> Enhanced UI/UX with interactive elements</div>
+          <div class="list-item"><strong>Phase 4:</strong> Code optimization and refactoring for better performance</div>
+          
+          <p style="margin-top: 1.5rem;">
+            Future enhancements planned for this project:
+          </p>
+          <div class="list-item">Enable uploading custom datasets for analysis</div>
+          <div class="list-item">Extend dimensionality reduction options beyond PCA (t-SNE, UMAP)</div>
         </section>
 
         <!-- Technologies Section -->
         <section class="section-card" style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technologies Used</h2>
           <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-            <!-- REPLACE: Technology Badges -->
-            <span class="skill-badge">Technology 1</span>
-            <span class="skill-badge">Technology 2</span>
-            <span class="skill-badge">Technology 3</span>
-            <span class="skill-badge">Technology 4</span>
-            <span class="skill-badge">Technology 5</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Flask</span>
+            <span class="skill-badge">NumPy</span>
+            <span class="skill-badge">SciPy</span>
+            <span class="skill-badge">scikit-learn</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">Pandas</span>
+            <span class="skill-badge">Machine Learning</span>
           </div>
         </section>
 
-        <!-- Source Code Section - Remove if project isn't on GitHub -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Learning Outcomes</h2>
+          <p style="margin-bottom: 1rem;">
+            Through this project, I gained valuable experiences in:
+          </p>
+          
+          <div class="list-item">Implementing machine learning algorithms from scratch</div>
+          <div class="list-item">Optimizing numerical computations with NumPy</div>
+          <div class="list-item">Building interactive web applications with Flask</div>
+          <div class="list-item">Working with data visualization and interactive plots</div>
+          <div class="list-item">Understanding the mathematical foundations of clustering algorithms</div>
+          <div class="list-item">Handling edge cases and numerical stability issues in ML algorithms</div>
+        </section>
+
+
         <section class="section-card" style="text-align: center;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Explore the Code</h2>
-          <!-- REPLACE: GitHub URL -->
-          <a href="https://github.com/siakhorsand/project-name" 
+          <a href="https://github.com/siakhorsand/Clustering-Visualization" 
              class="github-button"
              target="_blank">
             <i class="fab fa-github"></i>
             View on GitHub
           </a>
         </section>
-        
-        <!--  Results/Outcome Section - Remove if not needed -->
-        <!--
-        <section class="section-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Results & Impact</h2>
-          <p style="margin-bottom: 1rem;">
-            Describe the outcomes of this project, including any metrics, user feedback, or personal growth.
-          </p>
-          <div class="list-item">Result 1 - Description</div>
-          <div class="list-item">Result 2 - Description</div>
-          <div class="list-item">Result 3 - Description</div>
-        </section>
-        -->
       </main>
     </div>
 
     <script>
-
       const scrollProgress = document.querySelector('.scroll-progress');
       
       window.addEventListener('scroll', () => {
@@ -362,7 +528,6 @@
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       
-
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
@@ -383,7 +548,6 @@
           localStorage.setItem('theme', 'light');
         }
       });
-
 
       document.addEventListener('DOMContentLoaded', () => {
         const projectOverviewEl = document.getElementById('project-overview');
