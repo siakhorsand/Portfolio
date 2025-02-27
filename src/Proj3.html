@@ -14,8 +14,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- REPLACE: Project Title -->
-    <title>Project Title | Sia Khorsand</title>
+    <title>Blackjack Project | Sia Khorsand</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
@@ -240,13 +239,47 @@
         color: var(--accent-primary);
         font-weight: bold;
       }
+
+      .code-block {
+        background-color: var(--bg-color);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: monospace;
+        overflow-x: auto;
+        border: 1px solid var(--card-border);
+      }
+
+      .code-line {
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .version-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .version-card {
+        background-color: var(--accent-light);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        color: var(--text-primary);
+      }
+
+      @media (max-width: 768px) {
+        .version-comparison {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- Scroll progress indicator -->
+
     <div class="scroll-progress"></div>
     
-    <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
       <i class="fas fa-moon"></i>
     </button>
@@ -259,97 +292,146 @@
             Back to Projects
           </a>
         </nav>
-        <!-- REPLACE: Project Title -->
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">Project Title</h1>
-        <!-- REPLACE: Project Tagline -->
-        <p style="margin-top: 0.5rem;">Project tagline or short description</p>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); margin: 0;">Blackjack Game</h1>
+        <p style="margin-top: 0.5rem;">A Python-based card game with both text-based and GUI interfaces</p>
       </header>
 
       <main>
-        <!-- Overview Section with side-by-side layout -->
         <div class="overview-section">
           <div class="project-media">
-            <!-- REPLACE: Project Image/Demo -->
-            <img src="/api/placeholder/800/450" alt="Project Demo" style="width: 100%; display: block;">
+            <img src="/BJDemo.gif" alt="Blackjack Game Demo" style="width: 100%; display: block;">
           </div>
 
           <section class="section-card">
             <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Project Overview</h2>
-            <!-- REPLACE: Project Overview Text -->
             <p id="project-overview" style="line-height: 1.8;">
-              <strong>Project Name</strong> is a description of what this project does and why it's interesting. Add a paragraph explaining the motivation, goals, and overall purpose of this project.
+              <strong>Blackjack</strong> is an interactive card game implemented in Python that simulates the classic casino table game. The project began as a console-based application for a programming class and later evolved into a graphical version with Pygame.
               <br><br>
-              Add more details here about what makes this project unique, what challenges it addresses, or what you learned while building it.
+              Players can place bets, receive cards, and play against the dealer following standard blackjack rules. The game tracks your balance across sessions, provides realistic card visuals, and implements proper game logic including special rules like blackjack payouts.
             </p>
           </section>
         </div>
 
-        <!-- Technical Details Section -->
         <section class="section-card" style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technical Implementation</h2>
           <div style="margin-bottom: 2rem;">
-            <!-- REPLACE: Section Title -->
             <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Key Features</h3>
-            <!-- REPLACE: Feature List -->
-            <div class="list-item">Feature 1 - Description of this feature</div>
-            <div class="list-item">Feature 2 - Description of this feature</div>
-            <div class="list-item">Feature 3 - Description of this feature</div>
-            <div class="list-item">Feature 4 - Description of this feature</div>
-            <div class="list-item">Feature 5 - Description of this feature</div>
-            <div class="list-item">Feature 6 - Description of this feature</div>
+            <div class="list-item">Modular design with separate modules for card handling, game logic, and persistence</div>
+            <div class="list-item">Pygame-based GUI with interactive buttons, animations, and visual card representation</div>
+            <div class="list-item">Balance persistence between games using file I/O</div>
+            <div class="list-item">Full implementation of standard blackjack rules (hit, stand, blackjack payouts)</div>
+            <div class="list-item">Sophisticated card display with Unicode symbols and proper suit coloring</div>
+            <div class="list-item">Responsive betting system with multiple bet sizes</div>
           </div>
           
-          <!--  Additional Technical Section - Remove if not needed -->
           <div>
-            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implementation Challenges</h3>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Implementation Details</h3>
             <p style="margin-bottom: 1rem;">
-              Describe any interesting challenges you faced while implementing this project and how you overcame them.
+              The game is structured around three key modules: 
             </p>
+            <div class="list-item"><strong>deck.py</strong> - Handles card operations (deck creation, shuffling, dealing, and scoring)</div>
+            <div class="list-item"><strong>db.py</strong> - Manages persistence through simple file I/O to save player balance</div>
+            <div class="list-item"><strong>game.py</strong> - Implements the Pygame GUI version with graphics and interaction</div>
+            
+            <p style="margin-top: 1.5rem;">
+              The GUI implementation uses Pygame to create an interactive experience with buttons, card visualization, and game state management. The design implements proper object-oriented principles with separate classes for Cards, Buttons, and Game logic.
+            </p>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Version Evolution</h3>
+            <div class="version-comparison">
+              <div class="version-card">
+                <h4 style="margin-bottom: 0.75rem; color: var(--accent-primary);">Original Console Version</h4>
+                <div class="list-item">Text-based interface with ASCII card representations</div>
+                <div class="list-item">Command-line betting and gameplay</div>
+                <div class="list-item">Basic game mechanics with accurate rules</div>
+                <div class="list-item">File-based balance persistence</div>
+              </div>
+              <div class="version-card">
+                <h4 style="margin-bottom: 0.75rem; color: var(--accent-primary);">Enhanced GUI Version</h4>
+                <div class="list-item">Pygame graphical interface with interactive elements</div>
+                <div class="list-item">Button-based betting and gameplay controls</div>
+                <div class="list-item">Visual card representations with proper suit symbols</div>
+                <div class="list-item">Animation effects and improved UX</div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- Technologies Section -->
+        <section class="section-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Card Visualization</h2>
+          <p style="margin-bottom: 1.5rem;">
+            One of the most interesting aspects of the project was implementing card visualization in both versions. The text-based version uses ASCII art to represent cards:
+          </p>
+          
+          <div class="code-block">
+            <span class="code-line">def display_card(card):</span>
+            <span class="code-line">    card_name, card_suit, _ = card</span>
+            <span class="code-line"></span>
+            <span class="code-line">    if card_suit == 'Hearts':</span>
+            <span class="code-line">        suit = '♥'</span>
+            <span class="code-line">    elif card_suit == 'Diamonds':</span>
+            <span class="code-line">        suit = '♦'</span>
+            <span class="code-line">    # ... more code ...</span>
+            <span class="code-line"></span>
+            <span class="code-line">    card_display = '''</span>
+            <span class="code-line">        ┌─────────┐</span>
+            <span class="code-line">        │{}{}      │</span>
+            <span class="code-line">        │                     │</span>
+            <span class="code-line">        │    {}    │</span>
+            <span class="code-line">        │                   │</span>
+            <span class="code-line">        │      {}{}│</span>
+            <span class="code-line">        └─────────┘'''.format(card_name, suit, suit, card_name, suit)</span>
+          </div>
+          
+          <p style="margin-top: 1.5rem;">
+            The GUI version implements cards as objects with visual rendering in Pygame:
+          </p>
+          
+          <div class="code-block">
+            <span class="code-line">class Card:</span>
+            <span class="code-line">    def __init__(self, card_data, x, y, face_up=True):</span>
+            <span class="code-line">        self.rank = card_data[0]</span>
+            <span class="code-line">        self.suit = card_data[1]</span>
+            <span class="code-line">        self.value = card_data[2]</span>
+            <span class="code-line">        self.x = x</span>
+            <span class="code-line">        self.y = y</span>
+            <span class="code-line">        self.face_up = face_up</span>
+            <span class="code-line">        </span>
+            <span class="code-line">    def draw(self, surface):</span>
+            <span class="code-line">        # Draw card background</span>
+            <span class="code-line">        card_rect = pygame.Rect(self.x, self.y, CARD_WIDTH, CARD_HEIGHT)</span>
+            <span class="code-line">        pygame.draw.rect(surface, WHITE, card_rect, border_radius=5)</span>
+            <span class="code-line">        # ... more rendering code ...</span>
+          </div>
+        </section>
+
         <section class="section-card" style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Technologies Used</h2>
           <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-            <!-- REPLACE: Technology Badges -->
-            <span class="skill-badge">Technology 1</span>
-            <span class="skill-badge">Technology 2</span>
-            <span class="skill-badge">Technology 3</span>
-            <span class="skill-badge">Technology 4</span>
-            <span class="skill-badge">Technology 5</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Pygame</span>
+            <span class="skill-badge">Object-Oriented Design</span>
+            <span class="skill-badge">File I/O</span>
+            <span class="skill-badge">Game Logic</span>
+            <span class="skill-badge">UI Design</span>
           </div>
         </section>
 
-        <!-- Source Code Section - Remove if project isn't on GitHub -->
         <section class="section-card" style="text-align: center;">
           <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Explore the Code</h2>
-          <!-- REPLACE: GitHub URL -->
-          <a href="https://github.com/siakhorsand/project-name" 
+          <a href="https://github.com/siakhorsand/Blackjack" 
              class="github-button"
              target="_blank">
             <i class="fab fa-github"></i>
             View on GitHub
           </a>
         </section>
-        
-        <!--  Results/Outcome Section - Remove if not needed -->
-        <!--
-        <section class="section-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 1.5rem;">Results & Impact</h2>
-          <p style="margin-bottom: 1rem;">
-            Describe the outcomes of this project, including any metrics, user feedback, or personal growth.
-          </p>
-          <div class="list-item">Result 1 - Description</div>
-          <div class="list-item">Result 2 - Description</div>
-          <div class="list-item">Result 3 - Description</div>
-        </section>
-        -->
       </main>
     </div>
 
     <script>
-
       const scrollProgress = document.querySelector('.scroll-progress');
       
       window.addEventListener('scroll', () => {
@@ -362,7 +444,6 @@
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       
-
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
@@ -383,7 +464,6 @@
           localStorage.setItem('theme', 'light');
         }
       });
-
 
       document.addEventListener('DOMContentLoaded', () => {
         const projectOverviewEl = document.getElementById('project-overview');
